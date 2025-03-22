@@ -1,0 +1,38 @@
+<!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+     styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item">
+    <p>
+      {{- with .Site.Params.description }}
+      {{ . | markdownify }}
+      {{- end }}
+    </p>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a class="sidebar-nav-item {{ if .IsHome }} active {{ end }}" href="/">Home</a>
+    <a class="sidebar-nav-item {{ if eq .RelPermalink "/posts/" }} active {{ end }}" href="/posts/">Posts</a>
+    <a class="sidebar-nav-item {{ if eq .RelPermalink "/tags/" }} active {{ end }}" href="/tags/">Tags</a>
+    {{- $currentPage := . }}
+    {{- range .Site.Menus.main -}}
+    <a class="sidebar-nav-item{{if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) }} active{{end}}" href="{{ .URL }}" title="{{ .Title }}">{{ .Name }}</a>
+    {{- end -}}
+
+    {{- $thisperma := .Permalink }}
+    {{ range .Site.Pages.ByWeight -}}
+      {{ if isset .Params "sidebar" -}}
+        <a class="sidebar-nav-item {{ if eq .Permalink $thisperma }} active {{ end }}" href="{{ .Permalink }}">{{ .Title }}</a>
+      {{ end -}}
+    {{ end -}}
+
+    <a class="sidebar-nav-item" href="{{ .Site.Params.github }}" target="_blank">GitHub</a>
+    <a class="sidebar-nav-item" href="https://www.linkedin.com/in/alexander-ryabov/" target="_blank">Resume</a>
+  </nav>
+
+  <div class="sidebar-item">
+    <p>&copy; {{ .Site.Lastmod.Year }}. All rights reserved.</p>
+  </div>
+</div>

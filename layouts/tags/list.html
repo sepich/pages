@@ -1,0 +1,21 @@
+{{ partial "default_head.html" . }}
+
+<div class="post">
+  <h1 class="post-title">{{ .Title }}</h1>
+  {{ range .Data.Pages }}
+  <a href="/tags/#{{ .Title | lower }}" class="tag">#{{ .Title | lower }}</a>
+  {{ end }}
+</div>
+
+<div class="post">
+  <h1 class="post-title">Posts</h1>
+  {{ range .Data.Pages }}
+  <h3 id="{{ .Title | lower }}">#{{ .Title | lower }}</h3>
+  <ul id="list">
+    {{ range .Data.Pages }}
+    <li>{{ .Site.Params.DateForm | .Date.Format }} - <a href="{{ .Permalink }}">{{ .Title }}</a></li>
+    {{ end }}
+  </ul>
+  {{ end }}
+</div>
+{{ partial "default_foot.html" . }}

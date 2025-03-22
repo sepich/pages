@@ -1,0 +1,50 @@
+baseURL: 'https://alex.ryabov.dev/'
+languageCode: 'en-us'
+title: 'Alex Ryabov'
+
+publishdir: .public
+permalinks:
+  page: /:title/
+  posts: /:year/:month/:title # ~blogger
+outputs:
+  term: []  # disable /tags/tag-name/ generation
+
+params:
+  DateForm: "2 Jan 2006"
+  github: https://github.com/sepich/
+  disableFonts: false
+  customCSS:
+    - https://cdn.jsdelivr.net/npm/glightbox@3.3.1/dist/css/glightbox.min.css
+  customJS:
+    - https://cdn.jsdelivr.net/npm/glightbox@3.3.1/dist/js/glightbox.min.js
+  description: |
+    A reserved <a href="http://jekyllrb.com" target="_blank">Jekyll</a> theme that places the utmost gravity on content with a hidden drawer. Made by <a href="https://twitter.com/mdo" target="_blank">@mdo</a>.
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+      hardWraps: true
+    parser:
+      wrapStandAloneImageWithinParagraph: false
+      attribute:
+        block: true
+  # https://gohugo.io/functions/transform/highlight/#options
+  highlight:
+    noClasses: true
+    style: tango # https://gohugo.io/quick-reference/syntax-highlighting-styles/
+
+related:
+  includeNewer: true
+  toLower: true
+  threshold: 80
+  indices:
+    - name: tags
+      type: basic
+      weight: 80
+    - name: date
+      pattern: "2006"
+      type: basic
+      weight: 20
+taxonomies:
+  tag: tags
