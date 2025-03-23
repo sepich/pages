@@ -13,16 +13,12 @@ url: /2015/08/zabbix-graphs-improvements-patch.html
 > Update: You'd better check out my [zabbixGrapher](/2016/08/zabbix-vs-graphs.html)
 
 Here is the cumulative patch to fix some Zabbix graphs viewing issues. Ideas are not new, a lot of zabbix users complains on current out-of-the-box implementation:
-- [ZBXNEXT-1120](https://support.zabbix.com/browse/ZBXNEXT-1120)
-{ target="_blank" } - Enable viewing a graph for all hosts in a given group
-- [ZBXNEXT-75](https://support.zabbix.com/browse/ZBXNEXT-75)
-{ target="_blank" } - Add a "show all" option for viewing all graphs for a host on one page
-- [ZBXNEXT-1262](https://support.zabbix.com/browse/ZBXNEXT-1262)
-{ target="_blank" } - Nested host groups
+- [ZBXNEXT-1120](https://support.zabbix.com/browse/ZBXNEXT-1120) - Enable viewing a graph for all hosts in a given group
+- [ZBXNEXT-75](https://support.zabbix.com/browse/ZBXNEXT-75) - Add a "show all" option for viewing all graphs for a host on one page
+- [ZBXNEXT-1262](https://support.zabbix.com/browse/ZBXNEXT-1262) - Nested host groups
 - Minor graph appearance fix
 
-Full patch is for Zabbix 2.4.3. You can open it on [github](https://github.com/sepich/zabbix/blob/master/patches/graphs.patch)
-{ target="_blank" } and read below what each change do:
+Full patch is for Zabbix 2.4.3. You can open it on [github](https://github.com/sepich/zabbix/blob/master/patches/graphs.patch) and read below what each change do:
 
 #### include/views/monitoring.charts.php (Javascript in the beginning)
   
@@ -34,9 +30,7 @@ if(jQuery('#groupid option').length>50){
 ```
 
 #### include/views/monitoring.charts.php (the rest PHP code)
-This implements both [ZBXNEXT-1120](https://support.zabbix.com/browse/ZBXNEXT-1120)
-{ target="_blank" } and [ZBXNEXT-75](https://support.zabbix.com/browse/ZBXNEXT-75)
-{ target="_blank" }. So, now you can select host and do not specify graph to view all its graphs on one page. Or select graph to view and do not specify host (or even a group) to view this graph for multiple hosts.
+This implements both [ZBXNEXT-1120](https://support.zabbix.com/browse/ZBXNEXT-1120) and [ZBXNEXT-75](https://support.zabbix.com/browse/ZBXNEXT-75). So, now you can select host and do not specify graph to view all its graphs on one page. Or select graph to view and do not specify host (or even a group) to view this graph for multiple hosts.
 ![](/assets/img/2015/zb2.png)  
 As it is possible to have a lot of graphs attached to one server, or a lot of servers having the same graph (eth0 traffic) - paging is used here. Tweak this line to determine how many graphs should be displayed per page:
 ```php
@@ -56,8 +50,7 @@ Also, you might want to set theme graph background to white. Unfortunately, I do
 update graph_theme set backgroundcolor='FFFFFF' where graphthemeid='1';
 update graph_theme set graphbordercolor='FFFFFF' where graphthemeid='1';
 ```
-This patch is not depends but meant to be applied after [ZBXNEXT-599](https://support.zabbix.com/browse/ZBXNEXT-599)
-{ target="_blank" } "Logarithmic scale for Y-axis in graphs" like this:
+This patch is not depends but meant to be applied after [ZBXNEXT-599](https://support.zabbix.com/browse/ZBXNEXT-599) "Logarithmic scale for Y-axis in graphs" like this:
 ```bash
 wget https://support.zabbix.com/secure/attachment/35716/logarithmic-graphs-zabbix-2.4.5.patch
 wget https://github.com/sepich/zabbix/raw/master/patches/graphs.patch

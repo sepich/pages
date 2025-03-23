@@ -9,15 +9,12 @@ modified: '2013-01-13T21:36:54.495+04:00'
 thumbnail: /assets/img/2012/mount.png
 url: /2013/01/d-link-dir-620-openwrt-installation.html
 ---
-I've used OpenWRT for my D-Link DIR-620 A1 for almost a year now. Good news that OpenWRT community released already compiled beta versions (Latest for now is [12.09-rc1](http://downloads.openwrt.org/attitude_adjustment/12.09-rc1/ramips/rt305x/openwrt-ramips-rt305x-dir-620-a1-squashfs-sysupgrade.bin)
-{ target="_blank" } So now it's no need to compile trunk sources to get firmware for ramips hardware. My custom image is getting old, so I've decided to install latest community release.
+I've used OpenWRT for my D-Link DIR-620 A1 for almost a year now. Good news that OpenWRT community released already compiled beta versions (Latest for now is [12.09-rc1](http://downloads.openwrt.org/attitude_adjustment/12.09-rc1/ramips/rt305x/openwrt-ramips-rt305x-dir-620-a1-squashfs-sysupgrade.bin) So now it's no need to compile trunk sources to get firmware for ramips hardware. My custom image is getting old, so I've decided to install latest community release.
 
 This article is mostly for myself. Just want to leave some notes in case I'll need to update firmware again.
 ### uboot  
-Uboot was updated to 3.3.4 from [deadc0de](http://www.deadc0de.ru/downloads.html)
-{ target="_blank" }. This makes possible to use such recovery procedure:  
+Uboot was updated to 3.3.4 from [deadc0de](http://www.deadc0de.ru/downloads.html). This makes possible to use such recovery procedure:  
 - set local IP address to 10.10.10.3/24 and run [tftp server](http://tftpd32.jounin.net/)
-{ target="_blank" }  
 - place firmware named as `rt305x_firmware.bin` to root of tftp server  
 - turn-on the router while holding RESET button pressed for 5 sec  
 - router will start updating from tftp  
@@ -60,8 +57,7 @@ root@gw:~# touch /mnt/sda2/USB_DISK_NOT_PRESENT
 root@gw:~# chmod -R 444 /mnt/sda1
 root@gw:~# chmod -R 444 /mnt/sda2
 ```
-Ok, now I'll mount EXT3 partition and prepare it for root FS. ([There](https://forum.openwrt.org/viewtopic.php?id=27750)
-{ target="_blank" } is performance tests for different mount options)  
+Ok, now I'll mount EXT3 partition and prepare it for root FS. ([There](https://forum.openwrt.org/viewtopic.php?id=27750) is performance tests for different mount options)  
 ```bash
 root@gw:~# mount -t ext4 -o data=writeback,barrier=1 /dev/sda2 /mnt/sda2
 root@gw:~# tar -C /overlay -cvf - . | tar -C /mnt/sda2 -xf -
@@ -147,5 +143,4 @@ overlayfs:/overlay        1.9G    310.3M      1.5G  17% /
 Now root has 1.5Gb of free space and It's easy to install all additional services like minidlna, pptp, aiccu, boxbackup etc  
   
 ### PS  
-That's seems wonderful, but performance of DIR620 is very limited :( `Transmission` effectively can download no more than 3 downloads at once. `Minidlna` and `samba` storage transfer speeds is about 2Mb/s. This system is good for playing with all services. But to use them actively its need to have more power. So now i'm a fan of [cubieboard.org](http://cubieboard.org/)
-{ target="_blank" } :) Hope I'll get one and may be'll write about.
+That's seems wonderful, but performance of DIR620 is very limited :( `Transmission` effectively can download no more than 3 downloads at once. `Minidlna` and `samba` storage transfer speeds is about 2Mb/s. This system is good for playing with all services. But to use them actively its need to have more power. So now i'm a fan of [cubieboard.org](http://cubieboard.org/) :) Hope I'll get one and may be'll write about.

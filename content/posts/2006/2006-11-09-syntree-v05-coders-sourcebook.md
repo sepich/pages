@@ -11,7 +11,7 @@ url: /2006/11/syntree-v05-coders-sourcebook.html
 ![](/assets/img/200X/SynTree.gif)
 { width="250px" .right }
 [download](/assets/img/200X/SynTree.rar) | [forum](http://forum.vingrad.ru/index.php?act=ST&f=79&t=100678&unread=1)
-{ target="_blank" }  
+  
 Programm used to store code snippets. For a long time I was using **TreePad Lite** and always want to syntax highlight & code indenting. But i've not found any such progs in internet, so I 've to write it myself.  
   
 Features :

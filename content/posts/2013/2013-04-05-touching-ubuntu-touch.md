@@ -8,7 +8,5 @@ url: /2013/04/touching-ubuntu-touch.html
 ---
 ![](/assets/img/2013/touch.jpg)
 {height="300px" .left}
-Installed and touched the [Ubuntu Touch](https://wiki.ubuntu.com/Touch)
-{ target="_blank" } on Nexus4.  
-Waiting for the [Ubuntu for Android](http://www.ubuntu.com/phone/ubuntu-for-android)
-{ target="_blank" }!
+Installed and touched the [Ubuntu Touch](https://wiki.ubuntu.com/Touch) on Nexus4.  
+Waiting for the [Ubuntu for Android](http://www.ubuntu.com/phone/ubuntu-for-android)!

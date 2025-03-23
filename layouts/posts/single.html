@@ -6,22 +6,25 @@
   <i class="fa-solid fa-tags" title="page tags" aria-hidden="true"></i>{{ range .GetTerms "tags" }}<a href="/tags/#{{ .LinkTitle | lower }}" class="tag">#{{ .LinkTitle | lower }}</a>{{ end }}</span>
   {{ .Content }}
 </div>
+<div style="clear: both"></div>
 
 <nav class="post-nav">
   {{ if .Prev }}
   <a class="post-nav-item post-nav-prev" href="{{ .Prev.Permalink }}">
     <div class="nav-arrow">← previous</div>
-    <span class="post-title">{{ .Prev.Title }}</span>
+    {{ .Prev.Title }}
   </a>
   {{ end }} {{ if .Next }}
   <a class="post-nav-item post-nav-next" href="{{ .Next.Permalink }}">
     <div class="nav-arrow">next →</div>
-    <span class="post-title">{{ .Next.Title }}</span>
+    {{ .Next.Title }}
   </a>
   {{ end }}
 </nav>
+
 {{ with site.RegularPages.Related . | first 5 }}
-<p>Related content:</p>
+<div style="clear: both"></div>
+Related content:
 <ul>
   {{ range . }}
   <li><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>

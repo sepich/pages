@@ -24,56 +24,58 @@ url: /2011/08/display-computer-name-for-logged-on.html
 1. Для добавления колонок в оснастку **AD Users and Computers** запускаем **adsiedit.msc**. Переходим в конфигурацию   
 `CN=default-Display,CN=409,CN=DisplaySpecifiers,CN=Configuration,DC=example,DC=org`  
 В зависимости от языка системы выбирайте `409` - en, `419` - rus. Изменения конфигурации затронит все оснастки на всех компьютерах. Раскрываем параметр **extraColumns** и добавляем строку   
-```
-carLicense,Use,1,130,0
-```
-Поля, разделенные запятыми, означают:  
-  - имя поля AD
-  - заголовок колонки
-  - 1=отображать по умолчанию 0=нет
-  - ширина -1=автоподбор ширины по заголовку колонки
-  - 0=неизвестный параметр ;)
+    ```
+    carLicense,Use,1,130,0
+    ```
+    Поля, разделенные запятыми, означают:  
+     - имя поля AD
+     - заголовок колонки
+     - 1=отображать по умолчанию 0=нет
+     - ширина -1=автоподбор ширины по заголовку колонки
+     - 0=неизвестный параметр ;)
+
 1. Таким образом мы добавили колонку к просмотру **AD U&C** в режиме запросов. Если же необходимо добавить колонку к режиму просмотра OU, а так же OU Users и OU Computers (которые являются специальными контейнерами) - то необходимо так же отредактировать параметр **extraColumns** в конфигурациях:
-```
-CN=container-Display,CN=409,CN=DisplaySpecifiers,CN=Configuration,DC=example,DC=org ;  
-CN=organizationalUnit-Display,CN=409,CN=DisplaySpecifiers,CN=Configuration,DC=example,DC=org
-```
-Обратите внимание что параметра **extraColumns** там может и не быть, или он может быть пустой. И как только вы добавите в него строку, при добавлении колонок вы сможете выбирать только из списка который вы добавили в параметр - т.е. из одной колонки. Поэтому я так же добавляю колонку  
-```
-whenChanged,Modify,1,130,0
-```
-Чтобы иметь колонку с датой изменений (редактирования объекта, или последнего входа/выхода)   
+    ```
+    CN=container-Display,CN=409,CN=DisplaySpecifiers,CN=Configuration,DC=example,DC=org;
+    CN=organizationalUnit-Display,CN=409,CN=DisplaySpecifiers,CN=Configuration,DC=example,DC=org;
+    ```
+    Обратите внимание что параметра **extraColumns** там может и не быть, или он может быть пустой. И как только вы добавите в него строку, при добавлении колонок вы сможете выбирать только из списка который вы добавили в параметр - т.е. из одной колонки. Поэтому я так же добавляю колонку  
+    ```
+    whenChanged,Modify,1,130,0
+    ```
+   Чтобы иметь колонку с датой изменений (редактирования объекта, или последнего входа/выхода)
+
 1. Назначаем через GPO следующие vbs скрипты юзерам.  
-На logon:   
-```vb
-Dim adsinfo, ThisComp, oUser
-' Определяем объекты
-Set adsinfo = CreateObject("adsysteminfo")
-Set ThisComp = GetObject("LDAP://" & adsinfo.ComputerName)
-Set oUser = GetObject("LDAP://" & adsinfo.UserName)
-' Заносим данные в AD
-' В поле CarLicense компьютера пишем фамилию, имя пользователя и знак входа
-Thiscomp.put "CarLicense", oUser.sn + " " + oUser.givenName + " >"'+  CStr(Now)
-ThisComp.Setinfo
-'В поле CarLicense учетки пользователя пишем имя компьютера и знак входа
-oUser.put "CarLicense", ThisComp.cn + " <"'+  CStr(Now)
-oUser.Setinfo
-wscript.quit
-```
-И на logoff:   
-```vb
-Dim adsinfo, ThisComp, oUser
-' Определяем объекты
-Set adsinfo = CreateObject("adsysteminfo")
-Set ThisComp = GetObject("LDAP://" & adsinfo.ComputerName)
-Set oUser = GetObject("LDAP://" & adsinfo.UserName)
-' Заносим данные в AD
-' В поле CarLicense компьютера пишем фамилию,имя пользователя и знак выхода
-Thiscomp.put "CarLicense", oUser.sn + " " + oUser.givenName + " >"'+  CStr(Now)
-ThisComp.Setinfo
-'В поле CarLicense пользователя пишем имя компьютера и знак выхода
-oUser.put "CarLicense", ThisComp.cn + " >" '+ CStr(Now)
-oUser.Setinfo
-wscript.quit
-```
+    На logon:
+    ```vb
+    Dim adsinfo, ThisComp, oUser
+    ' Определяем объекты
+    Set adsinfo = CreateObject("adsysteminfo")
+    Set ThisComp = GetObject("LDAP://" & adsinfo.ComputerName)
+    Set oUser = GetObject("LDAP://" & adsinfo.UserName)
+    ' Заносим данные в AD
+    ' В поле CarLicense компьютера пишем фамилию, имя пользователя и знак входа
+    Thiscomp.put "CarLicense", oUser.sn + " " + oUser.givenName + " >"'+  CStr(Now)
+    ThisComp.Setinfo
+    'В поле CarLicense учетки пользователя пишем имя компьютера и знак входа
+    oUser.put "CarLicense", ThisComp.cn + " <"'+  CStr(Now)
+    oUser.Setinfo
+    wscript.quit
+    ```
+    И на logoff:   
+    ```vb
+    Dim adsinfo, ThisComp, oUser
+    ' Определяем объекты
+    Set adsinfo = CreateObject("adsysteminfo")
+    Set ThisComp = GetObject("LDAP://" & adsinfo.ComputerName)
+    Set oUser = GetObject("LDAP://" & adsinfo.UserName)
+    ' Заносим данные в AD
+    ' В поле CarLicense компьютера пишем фамилию,имя пользователя и знак выхода
+    Thiscomp.put "CarLicense", oUser.sn + " " + oUser.givenName + " >"'+  CStr(Now)
+    ThisComp.Setinfo
+    'В поле CarLicense пользователя пишем имя компьютера и знак выхода
+    oUser.put "CarLicense", ThisComp.cn + " >" '+ CStr(Now)
+    oUser.Setinfo
+    wscript.quit
+    ```
 1. Для проверки можно попробовать запустить logon скрипт с правами пользователя, он не должен выдавать ошибок, а в оснастке **AD Users and Computers** при обновлении должна появиться необходимая информация.

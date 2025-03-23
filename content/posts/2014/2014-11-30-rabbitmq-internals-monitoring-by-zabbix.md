@@ -27,11 +27,8 @@ UserParameter=rabbitmq[*],/etc/zabbix/rabbitmq.py $1 $2
 ```
 1. Which will call this data-getter:  
 [/etc/zabbix/rabbitmq.py](https://github.com/sepich/zabbix/raw/master/rabbitmq.py)
-{ target="_blank" }
 1. Import template  
 [template_app_rabbitmq.xml](https://github.com/sepich/zabbix/raw/master/templates/template_app_rabbitmq.xml)
-{ target="_blank" } 
-
 
 Notes:
 - Queues statistic is per-cluster and not per-server. This mean that having cluster of three nodes, all of them will have equal graphs for queues. So, there is line 31 in rabbitmq.py which states:

@@ -12,12 +12,9 @@ Server 2012 has a great feature - Deduplication. It can be very effective to opt
 { height="300px"}  
 And this example taken from Windows 8 =) So, it's possible to install deduplication service to Windows 8 with one caveat - it'll have no GUI. Only possible way to manage it - is Powershell.  
  
-If it's ok for you, then download correct version of deduplication service for your Windows 8 build number from [here](http://forums.mydigitallife.info/threads/34417-Data-deduplication-for-Windows-8-x64)
-{ target="_blank" }. I'll repeat links here:  
-Windows 8 Release Preview ([build 8400](http://www.mediafire.com/?5m9ljlc14ae94qo)
-{ target="_blank" })  
-Windows 8 Retail ([build 9200](http://www.mediafire.com/?anjx6rs4l8a7puf)
-{ target="_blank" })  
+If it's ok for you, then download correct version of deduplication service for your Windows 8 build number from [here](http://forums.mydigitallife.info/threads/34417-Data-deduplication-for-Windows-8-x64). I'll repeat links here:  
+Windows 8 Release Preview ([build 8400](http://www.mediafire.com/?5m9ljlc14ae94qo))  
+Windows 8 Retail ([build 9200](http://www.mediafire.com/?anjx6rs4l8a7puf))  
 Then install service from elevated prompt:  
 ```
 dism /online /add-package /packagepath:Microsoft-Windows-VdsInterop-Package~31bf3856ad364e35~amd64~~6.2.8400.0.cab /packagepath:Microsoft-Windows-VdsInterop-Package~31bf3856ad364e35~amd64~en-US~6.2.8400.0.cab /packagepath:Microsoft-Windows-FileServer-Package~31bf3856ad364e35~amd64~~6.2.8400.0.cab /packagepath:Microsoft-Windows-FileServer-Package~31bf3856ad364e35~amd64~en-US~6.2.8400.0.cab /packagepath:Microsoft-Windows-Dedup-Package~31bf3856ad364e35~amd64~~6.2.8400.0.cab /packagepath:Microsoft-Windows-Dedup-Package~31bf3856ad364e35~amd64~en-US~6.2.8400.0.cab
@@ -37,5 +34,4 @@ But it's no need to run such Job every time you changed data on a volume. Instal
 So all you need - just customize time of those tasks if you want to.  
   
 UPD 1.07.13  
-[Here](http://forums.mydigitallife.info/threads/34417-Data-deduplication-for-Windows-8-x64/page7?p=769315&viewfull=1#post769315)
-{ target="_blank" } is deduplication feature for new Windows 8.1
+[Here](http://forums.mydigitallife.info/threads/34417-Data-deduplication-for-Windows-8-x64/page7?p=769315&viewfull=1#post769315) is deduplication feature for new Windows 8.1

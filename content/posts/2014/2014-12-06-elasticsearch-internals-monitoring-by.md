@@ -24,10 +24,8 @@ UserParameter=es[*],/etc/zabbix/elasticsearch.py $1
 ```
 1. And here is the data-getter:  
 [/etc/zabbix/elasticsearch.py](https://github.com/sepich/zabbix/raw/master/elasticsearch.py)
-{ target="_blank" }
 2. Then import template:
 [template_app_elasticsearch.xml](https://github.com/sepich/zabbix/raw/master/templates/template_app_elasticsearch.xml)
-{ target="_blank" }
 
 How to add a new counter:
 - Browse JSON output of your server's:

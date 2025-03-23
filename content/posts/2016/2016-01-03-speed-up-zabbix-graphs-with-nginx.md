@@ -23,8 +23,7 @@ This will leave us with such stripped down URL:
 chart2.php?period=604800&stime=20161226030400&width=600&height=200&graphid=62014
 ```
 
-For [ad-hoc graphs](https://www.zabbix.com/documentation/2.4/manual/config/visualisation/graphs/adhoc)
-{ target="_blank" } URL would contain two more parameters and point to chart.php:
+For [ad-hoc graphs](https://www.zabbix.com/documentation/2.4/manual/config/visualisation/graphs/adhoc) URL would contain two more parameters and point to chart.php:
 ```bash
 chart.php?period=604800&stime=20161226030400&width=600&height=200&type=0&itemids%5B0%5D=34843&itemids%5B1%5D=34844&itemids%5B2%5D=34845
 ````

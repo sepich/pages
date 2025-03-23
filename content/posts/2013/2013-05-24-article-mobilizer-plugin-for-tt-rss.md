@@ -28,7 +28,6 @@ Article content is displayed inside of iframe. But nested site can block display
 Installation:
 - Download [mobilize.zip](http://i.sepa.spb.ru/_/mele/mobilize.zip) plugin  
 Or checkout the [https://github.com/sepich/tt-rss-mobilize](https://github.com/sepich/tt-rss-mobilize)
-{ target="_blank" }
 - Put `/mobilize/` folder from archive to your `/tt-rss/plugins/` folder
 - Open `tt-rss > Preferences > Plugins` and activate **Mobilize** plugin
 - To open mobilized article press "zoom" button at article toolbar, or use hotkey <kbd>V</kbd>

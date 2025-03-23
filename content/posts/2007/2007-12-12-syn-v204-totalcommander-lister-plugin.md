@@ -12,15 +12,11 @@ url: /2007/12/syn-v204-totalcommander-lister-plugin.html
 { width="250px" .right }
 ![](/assets/img/200X/S2.gif)
 { width="250px" .right }
-[download](/assets/img/200X/Syn2.rar) (sources included) | [forum](http://ghisler.ch/board/viewtopic.php?t=17470)
-{ target="_blank" } (EN)  
+[download](/assets/img/200X/Syn2.rar) (sources included) | [forum](http://ghisler.ch/board/viewtopic.php?t=17470)  
 Plugin now based on eControl Syntax Editor! So, it's only ACP files compatible from old Syn1. New highlighters and lexer info you can get on official site: [econtrol.ru](http://econtrol.ru/)
-{ target="_blank" }  
 
-_This is outdated soft!_   
-_Further development - [SynWrite](http://uvviewsoft.com)
-{ target="_blank" } by **atorg**_
-
+> This is outdated soft!
+Further development - [SynWrite](http://uvviewsoft.com) by **atorg**
 
 **Features** :
 - Encodings: WIN(1251), DOS(866), KOI8, MAC(10007), UTF-8, Unicode.
@@ -29,23 +25,23 @@ _Further development - [SynWrite](http://uvviewsoft.com)
 - Multistring RegExp Search&Replace with markers
 - CodeFolding & IndentGuides
 - History of opened files settings . (Cursor position, bookmarks, selection, window position etc)
-- Auto complete function names & parameters hint . (Ctrl-Space, Ctrl-Shift-Space)
+- Auto complete function names & parameters hint . (<kbd>Ctrl</kbd>-<kbd>Space</kbd>, <kbd>Ctrl</kbd>-<kbd>Shift</kbd>-<kbd>Space</kbd>)
 - AutoCompletition of tag attribute depending on tag name HTML&CSS (included)
-- Code snippets (Ctrl-J)
+- Code snippets (<kbd>Ctrl</kbd>-<kbd>J</kbd>)
 - etc 
 
 **What's new** v2.04 (20.12.12)
 - (f)WordWrap of russian text
 - (f)Possibly fixed 'Cannot open Clipboard' error
-- (f)Search settings (Ctrl-R panel) saved now
+- (f)Search settings (<kbd>Ctrl</kbd>-<kbd>R</kbd> panel) saved now
 - (f)Error when cursor over dir in TC quick view
 - (f)Position of Setup dialog off the screen
 - (f)Display of Setup->Editor->TabMode
 - (f)Wrong staples look on print/zoom
 - (f)Open deleted file from MRU
 - (f)Ask to Save when close Tab by DblClick
-- (+)Move line up/down (Alt-Up/Dn)
-- (+)Duplicate line (Ctrl-D)
+- (+)Move line up/down (<kbd>Alt</kbd>-<kbd>Up</kbd>/<kbd>Dn</kbd>)
+- (+)Duplicate line (<kbd>Ctrl</kbd>-<kbd>D</kbd>)
 - (+)Reload next file in QuickView without reload of plugin
 - (+)Select lines by click on gutter
 - (+)Hint when ACP list browsing

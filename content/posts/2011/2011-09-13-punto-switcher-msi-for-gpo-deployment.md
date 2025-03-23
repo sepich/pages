@@ -19,6 +19,5 @@ url: /2011/09/punto-switcher-msi-for-gpo-deployment.html
 - Настройки по умолчанию: автопереключение выкл., звуки выкл, <kbd>Win</kbd>+<kbd>S</kbd> убран, добавлен <kbd>Shift</kbd>+<kbd>ScrollLock</kbd> для истории буфера обмена.
 - В исключения программ добавлен IrfanView
 
-[Download Punto Switcher msi](http://ge.tt/9CnWhh7?c)
-{ target="_blank" }  
+[Download Punto Switcher msi](http://ge.tt/9CnWhh7?c) 
 [How to](/2011/09/howto-cook-custom-firefox-msi-for-enterprise-deployment.html) do it yourself

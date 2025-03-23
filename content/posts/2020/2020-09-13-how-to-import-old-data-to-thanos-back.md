@@ -8,8 +8,7 @@ thumbnail: /assets/img/2020/thanos.jpg
 url: /2020/09/how-to-import-old-data-to-thanos-back.html
 ---
 #### Short version
-Now it is possible to backfill any custom data in prometheus text format to Thanos via my cli tool [https://github.com/sepich/thanos-kit](https://github.com/sepich/thanos-kit)
-{ target="_blank" } and it's `import` command.
+Now it is possible to backfill any custom data in prometheus text format to Thanos via my cli tool [https://github.com/sepich/thanos-kit](https://github.com/sepich/thanos-kit) and it's `import` command.
 
 #### Long version
 Input data should be in prometheus text format with timestamps, lines sorted by time. Let's prepare some test data:  

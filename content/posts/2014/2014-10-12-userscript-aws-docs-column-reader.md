@@ -12,7 +12,6 @@ url: /2014/10/userscript-aws-docs-column-reader.html
 Continuation of [Wikipedia goes 3 columns](/2013/01/wikipedia-goes-3-columns.html)
 but now for AWS documentation:
 [http://docs.aws.amazon.com](http://docs.aws.amazon.com/)
-{ target="_blank" }
 
 This script will make long lines split to 3 columns, to make text more readable for wide screens.
 It will turn this:
@@ -23,7 +22,5 @@ to this:
 ![](/assets/img/2014/aws2.jpg)
 
 Installation:
-- You need a [userscript](http://en.wikipedia.org/wiki/Userscript)
-{ target="_blank" } compatible browser
+- You need a [userscript](http://en.wikipedia.org/wiki/Userscript) compatible browser
 - Then you can install script [here](https://openuserjs.org/scripts/sepich/AWS_Docs_Column_Reader)
-{ target="_blank" }

@@ -7,8 +7,7 @@ modified: '2014-02-14T22:51:00.130+04:00'
 url: /2014/02/debian-wheezy-and-brocade-101010201007.html
 ---
 There are two ways to make Brocade 1010/1020/1007 10Gbps CNA working in Debian Wheezy:
-1. Right way: Go to official Brocade site, download 3Gb(!) [iso image](http://www.brocade.com/services-support/drivers-downloads/adapters/ISO.page)
-{ target="_blank" } with binaries for kernel-2.6 (!) and sources. Compile sources for Debian's kernel-3.2.
+1. Right way: Go to official Brocade site, download 3Gb(!) [iso image](http://www.brocade.com/services-support/drivers-downloads/adapters/ISO.page) with binaries for kernel-2.6 (!) and sources. Compile sources for Debian's kernel-3.2.
 1. Quick way: It's not right but just works, if you need quickly enable networking with new kernel.
 
 That's what we got:
@@ -20,8 +19,7 @@ That's what we got:
 04:00.3 Ethernet controller: Brocade Communications Systems, Inc. 1010/1020/1007 10Gbps CNA (rev 01)
 ```
 
-So, hardware it here, but nothing in `ifconfig -a`. Official Debian [firmware wiki](https://wiki.debian.org/Firmware)
-{ target="_blank" } states that we need `bfa.ko` and `bna.ko`.
+So, hardware it here, but nothing in `ifconfig -a`. Official Debian [firmware wiki](https://wiki.debian.org/Firmware) states that we need `bfa.ko` and `bna.ko`.
 
 ```bash
 # modinfo bna
@@ -52,7 +50,6 @@ And kernel modules are indeed there. But what about firmware binaries? Links fro
 So, we just need find this `ctfw.bin` v3.0.2.2 for kernel-3.2 x64.
 Unfortunately I was unable to find this exact version of binary too, what i've found was v3.0.3.1 courtesy provided by fedora community:
 [http://rpmfind.net/linux/rpm2html/search.php?query=bfa-firmware](http://rpmfind.net/linux/rpm2html/search.php?query=bfa-firmware)
-{ target="_blank" }
 
 ```bash
 wget ftp://fr2.rpmfind.net/linux/fedora/linux/releases/18/Everything/x86_64/os/Packages/b/bfa-firmware-3.0.3.1-1.fc18.noarch.rpm

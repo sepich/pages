@@ -26,10 +26,7 @@ Disabled text menu, cleared statusbar, Adblock button moved to top bar
 `%ProgramFiles%\Mozilla Firefox`  
 for auto-updates works under user. This could be done by GPO settings (Windows configuration > Security > File system)
 - Modified [firefox.adm](http://ge.tt/8IUf6d7?c) GPP policy included. Added `localfilelinks` policy for opening intranet links to local resources, like `file:\\\o:\path\file` as described [here](http://kb.mozillazine.org/Links_to_local_pages_do_not_work)
-{ target="_blank" }
 
 [Download Firefox_en.msi](http://ge.tt/8IUf6d7?c)
-{ target="_blank" }  
-[Скачать Firefox.msi](http://ge.tt/8IUf6d7?c)
-{ target="_blank" } русский.  
+[Скачать Firefox.msi](http://ge.tt/8IUf6d7?c) русский.  
 [How to](/2011/09/howto-cook-custom-firefox-msi-for-enterprise-deployment.html) do it yourself

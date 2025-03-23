@@ -11,24 +11,24 @@ url: /2006/07/video-reports.html
 ---
 Видео отчеты с концертов/репетиции. Звук записан в живую во всех случаях. Сведение если было несколько камер, чистка, минимум эффектов.
 
-MDMA-She [27Mb | 720x480]  
+**MDMA-She** [27Mb | 720x480]  
 07.2006 первый концерт группы MelodyDownsMyAge =) клуб Friday, 2 камеры
-{% include embed/youtube.html id='lho3MCsQojA' %}
+{{<youtube lho3MCsQojA>}}
 
-MDMA-Overdrive [24Mb | 640x480]  
+**MDMA-Overdrive** [24Mb | 640x480]  
 04.2006 сьемка на 2 цифровых фотика на реп. точке  
-{% include embed/youtube.html id='mxAKSFv2Q7Y' %}
+{{<youtube mxAKSFv2Q7Y>}}
 
 
-MDMA-Счастливый смех [9Mb | 320x240]  
+**MDMA-Счастливый** смех [9Mb | 320x240]  
 11.2005 Центральный Дом Культуры г.Владимир
-{% include embed/youtube.html id='aI2881g6HtE' %}
+{{<youtube aI2881g6HtE>}}
 
 
-MDMA-Мозайка [21Mb | 640x480]  
+**MDMA-Мозайка** [21Mb | 640x480]  
 07.2005 день рождения группы, клуб Молоко  
-{% include embed/youtube.html id='dNpxgfmJcD0' %}
+{{<youtube dNpxgfmJcD0>}}
 
-MDMA-Снегодождь [3,5Mb | 320x240]  
+**MDMA-Снегодождь** [3,5Mb | 320x240]  
 2004? Самое первое лайв-видео =)
-{% include embed/youtube.html id='Bky--uyG3_A' %}
+{{<youtube Bky--uyG3_A>}}

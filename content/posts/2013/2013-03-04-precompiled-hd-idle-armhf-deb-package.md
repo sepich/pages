@@ -10,8 +10,7 @@ url: /2013/03/precompiled-hd-idle-armhf-deb-package.html
 There is still no hd-idle package in standard Debian repository. Even in testing branch.
 You can get sources at [official site](http://hd-idle.sourceforge.net/) but you'll need to install a lot of dependencies to compile it.
 Or here is already compiled version:  
-[Download](http://i.sepa.spb.ru/_/mele/hd-idle_1.04_armhf.deb)
-{ target="_blank" } hd-idle_1.04_armhf.deb
+[Download](http://i.sepa.spb.ru/_/mele/hd-idle_1.04_armhf.deb) hd-idle_1.04_armhf.deb
 
 Installation:
 ```bash

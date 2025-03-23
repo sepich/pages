@@ -17,12 +17,9 @@ Script will:
 - Move contents table and infoboxes to left pane instead of menu
 
 Installation:
-- You'll need a [userscript](http://en.wikipedia.org/wiki/Userscript)
-{ target="_blank" } compatible browser
+- You'll need a [userscript](http://en.wikipedia.org/wiki/Userscript) compatible browser
 - Then just click [this link](http://sepa.spb.ru/js/wiki.user.js)
-{ target="_blank" }
-- OR use [openuserjs.org](https://openuserjs.org/scripts/sepich/Wikipedia_goes_3_columns)
-{ target="_blank" } mirror
+- OR use [openuserjs.org](https://openuserjs.org/scripts/sepich/Wikipedia_goes_3_columns) mirror
 
 Enjoy!
 

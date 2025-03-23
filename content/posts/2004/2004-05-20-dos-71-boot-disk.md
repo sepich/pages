@@ -13,9 +13,9 @@ url: /2004/05/dos-71-boot-disk.html
 - Чтение NTFS дисков
 - чтение CD/DVD
 - QuickView - просмотр графики и видео
-- Системные утилиты: FORMAT.COM, SYS.COM, FDISK.EXE, SCANDISK.EXE, SMARTDRV.EXE, EMM386.EXE, HIMEM.SYS
+- Системные утилиты: `FORMAT.COM`, `SYS.COM`, `FDISK.EXE`, `SCANDISK.EXE`, `SMARTDRV.EXE`, `EMM386.EXE`, `HIMEM.SYS`
 - Руссификатор rkalt
-- Архиваторы: rar, arj, zip
+- Архиваторы: `rar`, `arj`, `zip`
 - Мышь
 
 И все это на одной дискете 1.44Мб! Подробнее об установке внутри [архива](/assets/img/200X/dos71sep.zip)

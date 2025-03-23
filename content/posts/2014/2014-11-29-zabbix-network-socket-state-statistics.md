@@ -21,7 +21,6 @@ UserParameter=sock[*], /bin/ss -ant | grep -v State | awk 'BEGIN {s["CLOSE-WAIT"
 ```
 1. Import template with counters and graph  
 [template_app_sockets.xml](https://github.com/sepich/zabbix/raw/master/templates/template_app_sockets.xml)
-{ target="_blank" }
 
 How it works:
 - all counters have type `zabbix trapper`, but the `UDP` counter (which is active)

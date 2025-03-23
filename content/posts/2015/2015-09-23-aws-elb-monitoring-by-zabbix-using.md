@@ -10,8 +10,7 @@ thumbnail: /assets/img/2015/aws1.png
 url: /2015/09/aws-elb-monitoring-by-zabbix-using.html
 ---
 It is a short note on getting monitoring data for Elastic Load Balancer to your Zabbix installation.  
-All monitoring in AWS including ELB is handled and exposed by CloudWatch service. [Free tier](https://aws.amazon.com/cloudwatch/pricing/)
-{ target="_blank" } include 5-minute frequency data gathering. Which then could be increased to 1-minute for money. For ELB we can get such counters from CloudWatch:
+All monitoring in AWS including ELB is handled and exposed by CloudWatch service. [Free tier](https://aws.amazon.com/cloudwatch/pricing/) include 5-minute frequency data gathering. Which then could be increased to 1-minute for money. For ELB we can get such counters from CloudWatch:
 - BackendConnectionErrors
 - HTTPCode_Backend_2XX
 - HTTPCode_Backend_3XX
@@ -23,32 +22,25 @@ All monitoring in AWS including ELB is handled and exposed by CloudWatch service
 - SurgeQueueLength
 - UnHealthyHostCount
 
-Read more details on each item in the [docs](http://docs.aws.amazon.com/ElasticLoadBalancing/latest/DeveloperGuide/elb-cloudwatch-metrics.html)
-{ target="_blank" }. One thing to note, that each counter could be accessed as Average, Min, Max, Sum and Count. So, for `RequestCount` Min and Max would be always 1 but Sum would be equal to Count and mean number or request per interval (1min or 5min). In other case Sum would not have meaning for `HealthyHostCount` but you would be more interested in Average. That complicate things a little comparing to Zabbix.
+Read more details on each item in the [docs](http://docs.aws.amazon.com/ElasticLoadBalancing/latest/DeveloperGuide/elb-cloudwatch-metrics.html). One thing to note, that each counter could be accessed as Average, Min, Max, Sum and Count. So, for `RequestCount` Min and Max would be always 1 but Sum would be equal to Count and mean number or request per interval (1min or 5min). In other case Sum would not have meaning for `HealthyHostCount` but you would be more interested in Average. That complicate things a little comparing to Zabbix.
 
 But there is one more thing (c) - CloudWatch do store items only when events happens. So, if you have small requests numbers on some ELB you could face with `SurgeQueueLength` stuck at 1k or something. Which is not meaningful, because it happened once, an hour ago, and there just were no much requests from that time.
 ![](/assets/img/2015/aws1.png)  
 Passing this data to Zabbix directly you would end up with line at 900 connecting all the dots. Which is not true, line should be at 0 with intermittent spikes to 900.
 
-Ok, at least we know how to get current data, and we will just return 0 to zabbix when there is no value collected by CloudWatch with current timestamp. I used python and boto and get results pretty easy. Also, there are multiple [cloudwatch-to-zabbix](https://github.com/randywallace/zabbix-cloudwatch)
-{ target="_blank" } scripts around. But they all works as zabbix agent checks (passive or active). So, for example to get those 10 counters for one ELB each minute, zabbix would fire the script 10 times/min, and each time script would connect to AWS to get the data. But API query to get the data is [the same](http://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricStatistics.html)
-{ target="_blank" }, even more - you can get up to 1440 points by one query. That's why it's better to make this monitoring to use zabbix traps. This way zabbix would do only one query to agent per minute, and it would get all 10 counters in one call.
+Ok, at least we know how to get current data, and we will just return 0 to zabbix when there is no value collected by CloudWatch with current timestamp. I used python and boto and get results pretty easy. Also, there are multiple [cloudwatch-to-zabbix](https://github.com/randywallace/zabbix-cloudwatch) scripts around. But they all works as zabbix agent checks (passive or active). So, for example to get those 10 counters for one ELB each minute, zabbix would fire the script 10 times/min, and each time script would connect to AWS to get the data. But API query to get the data is [the same](http://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricStatistics.html), even more - you can get up to 1440 points by one query. That's why it's better to make this monitoring to use zabbix traps. This way zabbix would do only one query to agent per minute, and it would get all 10 counters in one call.
 
 Usually ELB stats are not host bound, so this script should be not `zabbix agent extension`, but `external check` on server/proxy. To use it, you would create dummy server in zabbix (with pretty name like "ELB"), and attach template on it.
 
 #### Installation
 1. Place script from:  
-[cloudwatch.py](https://github.com/sepich/zabbix/raw/master/cloudwatch.py)
-{ target="_blank" }  
-to your `external scripts` directory on zabbix server or proxy. You could get the path of this folder in `zabbix_proxy.conf` looking for `ExternalScripts` value. (You might need to do `apt-get install python-boto` if you don't have it yet)
+[cloudwatch.py](https://github.com/sepich/zabbix/raw/master/cloudwatch.py) to your `external scripts` directory on zabbix server or proxy. You could get the path of this folder in `zabbix_proxy.conf` looking for `ExternalScripts` value. (You might need to do `apt-get install python-boto` if you don't have it yet)
 2. Fix script with your AWS key.
 ```bash
 aws_key='INSERT KEY'                    # AWS API key id
 aws_secret='INSERT SECRET'              # AWS API key
 ```
-If you do not have API key yet - you could read on how to generate it [here](http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-set-up.html#cli-signup)
-{ target="_blank" }. Due to it is stored in script in clear text you might wish to at least limit script access by `chmod`/`chown`. Better way would be if you have zabbix proxy as an EC2 VM - just grant necessary [IAM role to it directly](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2.html)
-{ target="_blank" } without using key at all.
+If you do not have API key yet - you could read on how to generate it [here](http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-set-up.html#cli-signup). Due to it is stored in script in clear text you might wish to at least limit script access by `chmod`/`chown`. Better way would be if you have zabbix proxy as an EC2 VM - just grant necessary [IAM role to it directly](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2.html) without using key at all.
 3. Check path to `zabbix_sender` and `zabbix-agent` config:
 ```bash
 sender = '/usr/bin/zabbix_sender'       # path zabbix_sender
@@ -58,7 +50,6 @@ Check that `zabbix_sender` is installed, and config has valid zabbix-server spec
 4. Open zabbix web interface and create dummy server named, say "ELB". Set corresponding zabbix-proxy for it, which has our script in externalscripts folder.
 5. Import template from:  
 [template_elb.xml](https://github.com/sepich/zabbix/raw/master/templates/template_elb.xml)
-{ target="_blank" }  
 and assign it to the created dummy server. Go to discovery and fix refresh time for the only active check prototype (everything else are traps) to 1min or 5 min depending on if you use detailed CloudWatch checks or not. (Template has 1min set as we are using detailed checks). Also, check filter tab for discovery, as we are filtering ELBs having `test` in their name.
 6. Discovery should create items for all found ELBs.
 ELB names are passed through Filter, which is configured on Filter Tab of Discovery rule

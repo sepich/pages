@@ -17,12 +17,12 @@ url: /2011/08/custom-context-commands-in-ad-users-and.html
 Часть domain.ru - конечно тоже у всех своя)
 1. Дважды кликаем на **user-Display** а затем на **adminContextMenu**
    ![](/assets/img/2011/ccom2.png)
-1. Добавляем   
-`4,Unlock,c:\Windows\SYSVOL\sysvol\domain.ru\scripts\unlockUser.vbs`  
+1. Добавляем
+`4,Unlock,c:\Windows\SYSVOL\sysvol\domain.ru\scripts\unlockUser.vbs`
 здесь поля разделенные запятыми:  
-- номер сверху, под которым пункт будет отображаться в меню  
-- название пункта, можно использовать & для указания hotkey  
-- путь к скрипту, можно указывать и UNC  
+    - номер сверху, под которым пункт будет отображаться в меню  
+    - название пункта, можно использовать & для указания hotkey  
+    - путь к скрипту, можно указывать и UNC  
 
 1. Открываем такой же атрибут для параметра:  
 `CN=computer-Display,CN=409,CN=DisplaySpecifiers,CN=Configuration,DC=domain,DC=ru`
@@ -34,7 +34,7 @@ url: /2011/08/custom-context-commands-in-ad-users-and.html
 ![](/assets/img/2011/ccom3.png)  
 Которое я не смог побороть (
 1. Сохраняем скрипт `unlockUser.vbs`:
-```vb
+   ```vb
    Const E_ADS_PROPERTY_NOT_FOUND = -2147463155
    
    Set wshArguments = WScript.Arguments
@@ -64,10 +64,10 @@ url: /2011/08/custom-context-commands-in-ad-users-and.html
          IsLockedOut = True
       End If
    End Function
-```
+   ```
 1. Сохраняем скрипт `ping.cmd`:  
-```
-ping %2 -t
-```
-(будет идти бесконечный пинг, закрытие окна по Ctrl-C)
+   ```
+   ping %2 -t
+   ```
+   (будет идти бесконечный пинг, закрытие окна по Ctrl-C)
 1. Открываем консоль ADUC и проверяем :)  

@@ -12,7 +12,7 @@ Some quick info about getting **Adobe Flash** and **Adobe Reader** installers in
 #### Adobe Flash  
 Get msi installer here:  
 [http://www.adobe.com/products/flashplayer/fp_distribution3.html](http://www.adobe.com/products/flashplayer/fp_distribution3.html)
-{ target="_blank" }  
+  
 For silent install from command prompt use commands like:  
 `start /w msiexec /i \\server\path\install_flash_player_10_active_x.msi /quiet` this is plugin for IE  
 `start /w msiexec /i \\server\path\install_flash_player_10_plugin.msi /quiet` this is for Mozilla like  
@@ -29,10 +29,10 @@ Or use GPO Preferences for creating such file
 ####  Adobe Reader  
 Get msi installer from ftp here:  
 [ftp://ftp.adobe.com/pub/adobe/reader/win/10.x/](ftp://ftp.adobe.com/pub/adobe/reader/win/10.x/)
-{ target="_blank" }  
+  
 Additionally you need CustomizationWizard for customizing installation settings  
 [http://www.adobe.com/support/downloads/detail.jsp?ftpID=4950](http://www.adobe.com/support/downloads/detail.jsp?ftpID=4950)
-{ target="_blank" }  
+  
 Using it you open **msi** file, tweak some settings, and get transformation **mst** file. Already tweaked my mst file you can get [here](http://min.us/mbiWWproFe)  
 For silent install from command prompt use something like:
 ```

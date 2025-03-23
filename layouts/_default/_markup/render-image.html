@@ -12,7 +12,8 @@
     {{- end -}}
   {{- end -}}
 {{- end -}}
-{{- if .IsBlock -}}
+{{- $resized := or (index .Attributes "width") (index .Attributes "height") -}}
+{{- if and .IsBlock $resized -}}
 <a href="{{ $src }}"{{ with .Title }} title="{{ . }}"{{ end }} class="glightbox"><img
   src="{{ $src }}" alt="{{ .PlainText }}"
   {{- with .Title }} title="{{ . }}" {{- end -}}

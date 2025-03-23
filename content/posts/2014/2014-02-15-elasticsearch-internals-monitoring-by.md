@@ -15,7 +15,7 @@ There are quite a lot of Zabbix monitoring agent extensions for ElasticSearch mo
 
 This in-detail data is displayed in ElasticSearch management interface, and provided in JSON by backend. You can preview it using any browser, just open:
 [http://servername:9200/_cluster/nodes/stats?all=true](http://servername:9200/_cluster/nodes/stats?all=true)
-{ target="_blank" }  
+
 Here is JSON browser from Firefox's Firebug:
 ![](/assets/img/2014/firebug.png)
 As you can see, there are indeed a lot of internal detailed counters. It's easy now to write Zabbix agent extension, to load JSON url, parse it, get needed counter and provide to Zabbix. Just a little issue here - if you need to check 70 different counters, then page will be downloaded 70 times. So, let's do some caching of downloaded data for 30sec in tmpfs then.
