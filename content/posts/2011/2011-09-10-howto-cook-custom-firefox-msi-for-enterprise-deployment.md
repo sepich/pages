@@ -11,7 +11,9 @@ thumbnail: /assets/img/2011/ff1.png
 ![](/assets/img/2011/ff1.png)
 { width="300px" .left }
 The official Mozilla stance on MSI distributions is expressed in [this article](https://wiki.mozilla.org/Deployment:Deploying_Firefox). It is recommended to wrap [FirefoxSetup.exe](https://wiki.mozilla.org/Installer:Command_Line_Arguments) in MSI, and any distribution of non-original packages is prohibited. However, when using wrappers, all the benefits of MSI are lost—auto-generation of rollback for changes, self-repair, and it becomes harder to manage updates, removals, and patches. In Mozilla's bug tracker, the issue [#231062](https://bugzilla.mozilla.org/show_bug.cgi?id=231062) Provide Firefox MSI package</a> has been open for 7 years! Meanwhile, Chrome has built-in support for [MSI](http://www.google.de/chrome/eula.html?platform=win&msi=true)
- and [GPO](http://www.chromium.org/administrators/policy-templates). No wonder an alternative build for Firefox appeared from FrontMotion — [Firefox Community Edition](http://www.frontmotion.com/FMFirefoxCE/download_fmfirefoxce.htm), which has its own peculiarities:  
+ and [GPO](http://www.chromium.org/administrators/policy-templates). 
+
+No wonder an alternative build for Firefox appeared from FrontMotion — [Firefox Community Edition](http://www.frontmotion.com/FMFirefoxCE/download_fmfirefoxce.htm), which has its own peculiarities:  
 [+] Applies policies set via [FirefoxAdm](http://sourceforge.net/projects/firefoxadm/) without additional extensions.  
 [+] Includes its own ADM/ADMX extensions for GPP console.  
 [+] Pre-installed plugins: Flash, IETab.  
@@ -35,20 +37,20 @@ I also added spell-check files `en-US.dic`.
 Now we need to make these settings the default for all new profiles. To do this, create the default profile folder 
 `C:\Program Files\Mozilla Firefox\defaults\profile`
 and copy from the user profile:
-- The `adblockplus` folder, if Adblock was installed.
-- The `localstore.rdf` file, if the text menu was removed or buttons were moved.
+   - The `adblockplus` folder, if Adblock was installed.
+   - The `localstore.rdf` file, if the text menu was removed or buttons were moved.
 1. Create a `prefs.js` file in the default profile and insert the following:
-```js
-user_pref("browser.shell.checkDefaultBrowser", false);
-user_pref("browser.startup.homepage", "ya.ru");
-user_pref("browser.startup.homepage_override.mstone", "ignore");
-user_pref("browser.startup.page", 3);
-user_pref("extensions.adblockplus.currentVersion", "1.3.9");
-user_pref("extensions.ietab2.hasRun", true);
-user_pref("extensions.ietab2.ietab2PrefsMigrated", true);
-user_pref("extensions.ietab2.version", "3.5.9.1");
-```
-This prevents extra tabs and welcome messages on the first launch and disables the default browser prompt. Full Firefox configuration options are [here](http://kb.mozillazine.org/About:config_entries).
+    ```js
+    user_pref("browser.shell.checkDefaultBrowser", false);
+    user_pref("browser.startup.homepage", "ya.ru");
+    user_pref("browser.startup.homepage_override.mstone", "ignore");
+    user_pref("browser.startup.page", 3);
+    user_pref("extensions.adblockplus.currentVersion", "1.3.9");
+    user_pref("extensions.ietab2.hasRun", true);
+    user_pref("extensions.ietab2.ietab2PrefsMigrated", true);
+    user_pref("extensions.ietab2.version", "3.5.9.1");
+    ```
+    This prevents extra tabs and welcome messages on the first launch and disables the default browser prompt. Full Firefox configuration options are [here](http://kb.mozillazine.org/About:config_entries).
 1. Copy the plugins from the user profile's `extensions` folder to:  
 `C:\Program Files\Mozilla Firefox\extensions`
 A little about XPI plugins. Starting from version 4, they do not necessarily need to be unpacked into a separate folder with a unique identifier for execution. They can remain in their original form. Therefore, in the plugins folder, you see a mix of folders and XPI files. When copied to the `Mozilla Firefox\extensions` folder, the plugin is installed globally. Previously, this had to be done using:
@@ -59,11 +61,10 @@ More details can be found [here](http://kb.mozillazine.org/Installing_extensions
 1. However, after each deletion of the `%appdata%\Mozilla\Firefox\` folder and launching the browser, a prompt to import bookmarks appears. To disable the bookmark import prompt, create the file:  
 `C:\Program Files\Mozilla Firefox\override.ini` 
 with the content:
-  ```ini
-  [XRE]
-  EnableProfileMigrator=false
-  ```
-
+    ```ini
+    [XRE]
+    EnableProfileMigrator=false
+    ```
 1. Once you are satisfied with the initial launch of the browser with an empty profile, you can proceed to packaging it into an MSI. Launch [wItem Installer](http://www.witemsoft.com/togo/downloads/) and create a new project. Fill in the information on the **General Info** tab and select the installation of shortcuts for all users, not just the current one.
 ![](/assets/img/2011/ff3.png)
 1. On the **Files** tab, drag and drop all contents from our folder `C:\Program Files\Mozilla Firefox\`

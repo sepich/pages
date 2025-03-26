@@ -10,28 +10,29 @@ url: /2011/09/debian-domain-join.html
 ---
 How to join Debian Squeeze to Active Directory Domain (winbind method).This makes possible to login as domain user, make samba shares with domain security, ntlm SSO to Apache sites, ntlm auth with Squid proxy.  
 
-I'm starting with blank Debian Squeeze installation at server `pbx (192.168.7.2)`   
+I'm starting with blank Debian Squeeze installation at 
+server `pbx (192.168.7.2)`   
 and Active Directory domain - `domain.ru` (Kerberos name `DOMAIN`)   
 with DC `dc.domain.ru (192.168.7.1)`  
-At first, we need to make sure clock is synchronized with AD, and DNS domain queries are correctly forwarded to DC.  
 
+At first, we need to make sure clock is synchronized with AD, and DNS domain queries are correctly forwarded to DC.
 1. To forward domain DNS queries we have two ways: 
    - Add/replace in `/etc/resolv.conf` this line to forward all DNS queries to DC `nameserver 192.168.7.1` and supersede this params from updating by dhcp-client   
-   ```bash
-   # nano /etc/dhcp/dhclient.conf
-   supersede domain-name "domain.ru";
-   prepend domain-name-servers 192.168.7.1;
-   ```
+      ```bash
+      # nano /etc/dhcp/dhclient.conf
+      supersede domain-name "domain.ru";
+      prepend domain-name-servers 192.168.7.1;
+      ```
    - Or, if you use bind, add domain forwarding to `/etc/bind/named.conf.local`   
-   ```conf
-      zone "domain.ru" {
-        type forward;
-        forwarders {
-          192.168.7.1;
-        };
-      };
-   ```
-Checking DNS resolution:  
+      ```conf
+         zone "domain.ru" {
+           type forward;
+           forwarders {
+             192.168.7.1;
+           };
+         };
+      ```
+   Checking DNS resolution:  
    ```bash
       # dig domain.ru
       ;; QUESTION SECTION:
@@ -41,26 +42,26 @@ Checking DNS resolution:
       domain.ru.              600     IN      A       192.168.7.1
    ```
 1. To sync clock we need `ntpdate` 
-```bash
-aptitude install ntpdate
-echo 'NTPSERVERS="dc.domain.ru"'> /etc/default/ntpdate
-ntpdate -s dc.domain.ru
-```
-Check time at DC and Debian, it must be synced second to second
+   ```bash
+   aptitude install ntpdate
+   echo 'NTPSERVERS="dc.domain.ru"'> /etc/default/ntpdate
+   ntpdate -s dc.domain.ru
+   ```
+   Check time at DC and Debian, it must be synced second to second
 1. Check `/etc/hosts` to include FQDN 
-```
-127.0.0.1       localhost
-127.0.1.1       pbx.domain.ru        pbx
-```
+   ```
+   127.0.0.1       localhost
+   127.0.1.1       pbx.domain.ru        pbx
+   ```
 1. Ok, preparation completed, let's join domain :) At first we need kerberos packages:
-```bash
-# aptitude install krb5-doc krb5-user krb5-config
-Default Kerberos version 5 realm: DOMAIN.RU
-Kerberos servers for your realm: dc.domain.ru
-Administrative server for your Kerberos realm: dc.domain.ru
-```
-Open `/etc/krb5.conf` and edit like this:
-```ini
+   ```bash
+   # aptitude install krb5-doc krb5-user krb5-config
+   Default Kerberos version 5 realm: DOMAIN.RU
+   Kerberos servers for your realm: dc.domain.ru
+   Administrative server for your Kerberos realm: dc.domain.ru
+   ```
+   Open `/etc/krb5.conf` and edit like this:
+   ```ini
    [libdefaults]
    default_realm = DOMAIN.RU
    ticket_lifetime = 24000
@@ -88,17 +89,17 @@ Open `/etc/krb5.conf` and edit like this:
    default = FILE:/var/log/krb5libs.log
    kdc = FILE:/var/log/krb5dc.log
    admin_server = FILE:/var/log/ksadmind.log
-```
-Here,`admin_server` - is the DC with **PDC Emulator** FSMO  
-`kdc` - one or more strings with domain controllers names
+   ```
+   Here,`admin_server` - is the DC with **PDC Emulator** FSMO  
+   `kdc` - one or more strings with domain controllers names
 1. Creating log files: 
-```bash
-touch /var/log/krb5libs.log
-touch /var/log/krb5dc.log
-touch /var/log/ksadmind.log
-```
+   ```bash
+   touch /var/log/krb5libs.log
+   touch /var/log/krb5dc.log
+   touch /var/log/ksadmind.log
+   ```
 1. Trying to bind to AD: 
-```bash
+   ```bash
    # kinit Administrator
    Password for Administrator@DOMAIN.RU:
    # klist
@@ -107,14 +108,14 @@ touch /var/log/ksadmind.log
    
    Valid starting     Expires            Service principal
    09/25/11 22:05:33  09/26/11 04:45:33  krbtgt/DOMAIN.RU@DOMAIN.RU
-```
+   ```
 1. Ok, now install samba and winbind 
-```bash
-# aptitude install winbind samba
-Workgroup/Domain Name: DOMAIN
-```
-...and configure `/etc/samba/smb.conf`
-```ini
+   ```bash
+   # aptitude install winbind samba
+   Workgroup/Domain Name: DOMAIN
+   ```
+   ...and configure `/etc/samba/smb.conf`
+   ```ini
    [global]
    workgroup = DOMAIN
    server string = %h server
@@ -181,49 +182,49 @@ Workgroup/Domain Name: DOMAIN
    create mask = 0700
    directory mask = 0700
    valid users = DOMAIN\%S
-```
-..and test this: 
-```bash
-testparm
-```
-Some notes:  
-`@IT` - group names, if name contain spaces, place it in quotes (`@"Domain Users"`)  
-`DOMAIN\sepa` - username from domain
+   ```
+   ..and test this: 
+   ```bash
+   testparm
+   ```
+   Some notes:  
+   `@IT` - group names, if name contain spaces, place it in quotes (`@"Domain Users"`)  
+   `DOMAIN\sepa` - username from domain
 1. Make homedir for domain users 
-```bash
-mkdir /home/DOMAIN
-```
+   ```bash
+   mkdir /home/DOMAIN
+   ```
 1. Re-read config and join domain 
-```
-# /etc/init.d/winbind stop && /etc/init.d/samba restart && /etc/init.d/winbind start
-# net ads join -U administrator
-Enter administrator's password:
-Using short domain name -- DOMAIN
-Joined 'PBX' to realm 'domain.ru'
-DNS update failed!
-```
-And looking to Active Directory Users and Computers   
+   ```
+   # /etc/init.d/winbind stop && /etc/init.d/samba restart && /etc/init.d/winbind start
+   # net ads join -U administrator
+   Enter administrator's password:
+   Using short domain name -- DOMAIN
+   Joined 'PBX' to realm 'domain.ru'
+   DNS update failed!
+   ```
+   And looking to Active Directory Users and Computers   
 ![](/assets/img/2011/pbx.png)
 1. Reloading and checking winbind info about domain users and groups 
-```bash
-/etc/init.d/winbind force-reload
-wbinfo -u
-wbinfo -g
-```
+   ```bash
+   /etc/init.d/winbind force-reload
+   wbinfo -u
+   wbinfo -g
+   ```
 1. Add auth by winbind to `/etc/nsswitch.conf`:
-```bash
-passwd: compat winbind
-group: compat winbind
-shadow: compat winbind
-hosts: files dns
-```
-and check that domain users and groups are added 
-```bash
-getent passwd
-getent group
-```
+   ```bash
+   passwd: compat winbind
+   group: compat winbind
+   shadow: compat winbind
+   hosts: files dns
+   ```
+   and check that domain users and groups are added 
+   ```bash
+   getent passwd
+   getent group
+   ```
 1. Now setup login to Debian as domain users 
-```bash
+   ```bash
    # nano /etc/pam.d/common-account
    account [success=2 new_authtok_reqd=done default=ignore]        pam_unix.so
    account [success=1 new_authtok_reqd=done default=ignore]        pam_winbind.so
@@ -231,27 +232,27 @@ getent group
    # nano /etc/pam.d/common-auth
    auth    [success=2 default=ignore]      pam_unix.so nullok_secure
    auth    [success=1 default=ignore]      pam_winbind.so require_membership_of={SID} krb5_auth krb5_ccache_type=FILE cached_login try_first_pass
-```
-Here `{SID}` is AD SID of group you want to give access to login to debian server. Members of this group only can login, this does not grant any rights. We also enable cached logins, so we can login with domain credentials when domain is not accessible (if we've already login with this user before) 
-```bash
-# nano /etc/pam.d/common-password
-password        [success=2 default=ignore]      pam_unix.so obscure sha512
-password        [success=1 default=ignore]      pam_winbind.so use_authtok try_first_pass
-```
+   ```
+   Here `{SID}` is AD SID of group you want to give access to login to debian server. Members of this group only can login, this does not grant any rights. We also enable cached logins, so we can login with domain credentials when domain is not accessible (if we've already login with this user before) 
+   ```bash
+   # nano /etc/pam.d/common-password
+   password        [success=2 default=ignore]      pam_unix.so obscure sha512
+   password        [success=1 default=ignore]      pam_winbind.so use_authtok try_first_pass
+   ```
 1. Automatically make homedir folder for new users 
-```bash
-# nano /etc/pam.d/common-session
-session required pam_mkhomedir.so skel=/etc/skel/ umask=0022
-```
+   ```bash
+   # nano /etc/pam.d/common-session
+   session required pam_mkhomedir.so skel=/etc/skel/ umask=0022
+   ```
 1. Give some AD group rights to sudo as root: 
-```bash
-# visudo
-%adgroup        ALL=(ALL) ALL
-```
-If you want to use group with spaces in its name - use `\ ` instead spaces (`%domain\ admins`) 
+   ```bash
+   # visudo
+   %adgroup        ALL=(ALL) ALL
+   ```
+   If you want to use group with spaces in its name - use `\ ` instead spaces (`%domain\ admins`) 
 
-That's all. Try to reboot and login as domain user.   
+That's all. Try to reboot and login as domain user:
 `shutdown -r now`  
-If you have same name for local admin user on debian, and in AD, you can make symlink of homedir   
+If you have same name for local admin user on debian, and in AD, you can make symlink of homedir:
 `ln -s /home/sepa/ /home/DOMAIN/`  
 When you login by ssh you can use one login name and both passwords (from local user or AD user)

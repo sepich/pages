@@ -34,19 +34,20 @@ Usually ELB stats are not host bound, so this script should be not `zabbix agent
 
 #### Installation
 1. Place script from:  
-[cloudwatch.py](https://github.com/sepich/zabbix/raw/master/cloudwatch.py) to your `external scripts` directory on zabbix server or proxy. You could get the path of this folder in `zabbix_proxy.conf` looking for `ExternalScripts` value. (You might need to do `apt-get install python-boto` if you don't have it yet)
+[cloudwatch.py](https://github.com/sepich/zabbix/raw/master/cloudwatch.py) 
+to your `external scripts` directory on zabbix server or proxy. You could get the path of this folder in `zabbix_proxy.conf` looking for `ExternalScripts` value. (You might need to do `apt-get install python-boto` if you don't have it yet)
 2. Fix script with your AWS key.
-```bash
-aws_key='INSERT KEY'                    # AWS API key id
-aws_secret='INSERT SECRET'              # AWS API key
-```
-If you do not have API key yet - you could read on how to generate it [here](http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-set-up.html#cli-signup). Due to it is stored in script in clear text you might wish to at least limit script access by `chmod`/`chown`. Better way would be if you have zabbix proxy as an EC2 VM - just grant necessary [IAM role to it directly](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2.html) without using key at all.
+    ```bash
+    aws_key='INSERT KEY'                    # AWS API key id
+    aws_secret='INSERT SECRET'              # AWS API key
+    ```
+   If you do not have API key yet - you could read on how to generate it [here](http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-set-up.html#cli-signup). Due to it is stored in script in clear text you might wish to at least limit script access by `chmod`/`chown`. Better way would be if you have zabbix proxy as an EC2 VM - just grant necessary [IAM role to it directly](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2.html) without using key at all.
 3. Check path to `zabbix_sender` and `zabbix-agent` config:
-```bash
-sender = '/usr/bin/zabbix_sender'       # path zabbix_sender
-cfg = '/etc/zabbix/zabbix_agentd.conf'  # path to zabbix-agent config
-```
-Check that `zabbix_sender` is installed, and config has valid zabbix-server specified. Trap data would be send there.
+    ```bash
+    sender = '/usr/bin/zabbix_sender'       # path zabbix_sender
+    cfg = '/etc/zabbix/zabbix_agentd.conf'  # path to zabbix-agent config
+    ```
+    Check that `zabbix_sender` is installed, and config has valid zabbix-server specified. Trap data would be send there.
 4. Open zabbix web interface and create dummy server named, say "ELB". Set corresponding zabbix-proxy for it, which has our script in externalscripts folder.
 5. Import template from:  
 [template_elb.xml](https://github.com/sepich/zabbix/raw/master/templates/template_elb.xml)

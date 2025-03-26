@@ -4,17 +4,17 @@
 
 <!-- Toggleable sidebar -->
 <div class="sidebar" id="sidebar">
+  {{- with .Site.Params.description }}
   <div class="sidebar-item">
     <p>
-      {{- with .Site.Params.description }}
       {{ . | markdownify }}
-      {{- end }}
     </p>
   </div>
+  {{- end }}
 
   <nav class="sidebar-nav">
     <a class="sidebar-nav-item {{ if .IsHome }} active {{ end }}" href="/">Home</a>
-    <a class="sidebar-nav-item {{ if eq .RelPermalink "/posts/" }} active {{ end }}" href="/posts/">Posts</a>
+    {{- if hugo.IsDevelopment }}<a class="sidebar-nav-item {{ if eq .RelPermalink "/posts/" }} active {{ end }}" href="/posts/">Posts</a>{{ end }}
     <a class="sidebar-nav-item {{ if eq .RelPermalink "/tags/" }} active {{ end }}" href="/tags/">Tags</a>
     {{- $currentPage := . }}
     {{- range .Site.Menus.main -}}
@@ -33,6 +33,6 @@
   </nav>
 
   <div class="sidebar-item">
-    <p>&copy; {{ .Site.Lastmod.Year }}. All rights reserved.</p>
+    <p>(ɔ) Copyleft {{ .Site.Lastmod.Year }}. All wrongs reserved. </p>
   </div>
 </div>

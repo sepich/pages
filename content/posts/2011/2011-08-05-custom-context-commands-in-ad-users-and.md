@@ -12,7 +12,7 @@ url: /2011/08/custom-context-commands-in-ad-users-and.html
 
 В примере покажу Ping для Компьютеров и Unlock для Пользователей:
 1. Открываем **adsiedit.msc** и переходим в раздел:  
-`CN=user-Display,CN=409,CN=DisplaySpecifiers,CN=Configuration,DC=domain,DC=ru`
+`CN=user-Display, CN=409, CN=DisplaySpecifiers, CN=Configuration, DC=domain, DC=ru`
 Здесь `409` - для английского языка системы, `419` - для русского.   
 Часть domain.ru - конечно тоже у всех своя)
 1. Дважды кликаем на **user-Display** а затем на **adminContextMenu**
@@ -25,7 +25,7 @@ url: /2011/08/custom-context-commands-in-ad-users-and.html
     - путь к скрипту, можно указывать и UNC  
 
 1. Открываем такой же атрибут для параметра:  
-`CN=computer-Display,CN=409,CN=DisplaySpecifiers,CN=Configuration,DC=domain,DC=ru`
+`CN=computer-Display, CN=409, CN=DisplaySpecifiers, CN=Configuration, DC=domain, DC=ru`
 и добавляем:  
 `5,Ping,c:\Windows\SYSVOL\sysvol\domain.ru\scripts\ping.cmd`
 1. Теперь дело за самими скриптами. Здесь для примера используется обработка параметров вызова для vbs и cmd. Путь по которому лежат скрипты реплицируется на все контроллеры домена, а вот если вы будете открывать консоль ADUC с локального компа, например через RSAT, то скрипты обнаружены не будут. Если вам необходимо такое использование, то можно положить скрипты в шару, или в  

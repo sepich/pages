@@ -14,8 +14,10 @@ Get msi installer here:
 [http://www.adobe.com/products/flashplayer/fp_distribution3.html](http://www.adobe.com/products/flashplayer/fp_distribution3.html)
   
 For silent install from command prompt use commands like:  
-`start /w msiexec /i \\server\path\install_flash_player_10_active_x.msi /quiet` this is plugin for IE  
-`start /w msiexec /i \\server\path\install_flash_player_10_plugin.msi /quiet` this is for Mozilla like  
+`start /w msiexec /i \\server\path\install_flash_player_10_active_x.msi /quiet` 
+this is plugin for IE  
+`start /w msiexec /i \\server\path\install_flash_player_10_plugin.msi /quiet` 
+this is for Mozilla like  
 
 Additionally you may want to delete logs:  
 `del /f /s /q "%windir%\system32\Macromed\Flash\*.log"`  

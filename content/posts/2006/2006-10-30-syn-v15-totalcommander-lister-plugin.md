@@ -21,11 +21,11 @@ Old version based on modified SynEdit engine. Hosted here for history. But some 
 - Multistring Search&Replace with markers
 - CodeFolding & IndentGuides
 - History of opened files settings . (Cursor position, bookmarks, selection, window position etc)
-- Auto complete function names & parameters hint . (Ctrl-Space, Ctrl-Shift-Space) You need to download extensions below for n languages</li>
+- Auto complete function names & parameters hint . (<kbd>Ctrl</kbd>-<kbd>Space</kbd>, <kbd>Ctrl</kbd>-<kbd>Shift</kbd>-<kbd>Space</kbd>) You need to download extensions below for n languages
 - AutoCompletition of tag attribute depending on tag name HTML&CSS (included)
-- Code snippets (Ctrl-J)
-- Syntax check by external programm (F8)
-- Function & Variables list in CodeExplorer. Ctrl-Click to navigate.
+- Code snippets (<kbd>Ctrl</kbd>-<kbd>J</kbd>)
+- Syntax check by external programm (<kbd>F8</kbd>)
+- Function & Variables list in CodeExplorer. <kbd>Ctrl</kbd>-<kbd>Click</kbd> to navigate.
 - etc
   
 <b>What's new</b> v1.5 (30.10.2006)
@@ -35,5 +35,5 @@ Old version based on modified SynEdit engine. Hosted here for history. But some 
 - Exit keys are blocked now on loading
 - Simple text formatting (Right/Left/Center/Justify), details in readme.txt
 - Options for QuickSearch in it's context menu
-- Dont start now by Ctrl-Q on folder in clear TC
+- Dont start now by <kbd>Ctrl</kbd>-<kbd>Q</kbd> on folder in clear TC
 - Some small fixes

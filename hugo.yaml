@@ -18,7 +18,7 @@ params:
   customJS:
     - https://cdn.jsdelivr.net/npm/glightbox@3.3.1/dist/js/glightbox.min.js
   description: |
-    A reserved <a href="http://jekyllrb.com" target="_blank">Jekyll</a> theme that places the utmost gravity on content with a hidden drawer. Made by <a href="https://twitter.com/mdo" target="_blank">@mdo</a>.
+    Opinions expressed here are my own and do not represent those of my employer.
 
 markup:
   goldmark:

@@ -1,6 +1,7 @@
 ---
 title: About
 sidebar: true
+draft: true
 ---
 
 <p class="message">

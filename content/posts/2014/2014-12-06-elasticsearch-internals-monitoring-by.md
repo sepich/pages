@@ -10,7 +10,6 @@ url: /2014/12/elasticsearch-internals-monitoring-by.html
 ---
 Here is more resource oriented version of ElasticSearch monitoring from [previous article](/2014/02/elasticsearch-internals-monitoring-by.html) with using zabbix-traps. Also, it comes with very basic template, which was so asked in comments:
 ![](/assets/img/2014/e1.png)
-
 Graphs included:
 - Shard's nodes status
 - Indices tasks speed
@@ -35,5 +34,6 @@ How to add a new counter:
 - Create new counter in zabbix with:   
 `key name = es[path.you.found]`  
 and `type = zabbix_trap`
-- And here is the difference from [previous version](/2014/02/elasticsearch-internals-monitoring-by.html):   
+
+And here is the difference from [previous version](/2014/02/elasticsearch-internals-monitoring-by.html):   
 Please note that you also need to add this path to counter to traps2 section of `elasticsearch.py` file. Then execute `elasticsearch.py` without any parameters and debug of `zabbix_sender` should be written to console. In top section you should find your new counter key (if it isn't - key is not found or empty in JSON output), and in bottom section number of failed items should be zero (if it isn't - there is no such key for this server configured in zabbix web)

@@ -9,7 +9,6 @@ url: /2013/05/article-mobilizer-plugin-for-tt-rss.html
 ---
 One feature that i've always missed in the **Gooogle Reader** was ability to open mobilized version of article link right in feed list (As it is done in **gReader** and **JustReader** mobile clients). What was problem for **Google Reader** is not a problem to implement for **Tiny Tiny RSS** - open source alternative of Google's product. This is my plugin which makes possible to read mobilized version of full-article linked from RSS-feed.
 ![](/assets/img/2013/mob1.jpg)
-{width=500px}
 For now you can choose from those mobilizing services for each feed separately:
 - **Readability** (default option)
 - **Instapaper**
@@ -20,7 +19,6 @@ For now you can choose from those mobilizing services for each feed separately:
 
 This can be configured right from **tt-rss** feed config popup:
 ![](/assets/img/2013/mob2.jpg)
-{width=500px}
 
 Note about displaying `Original` article:  
 Article content is displayed inside of iframe. But nested site can block displaying itself inside iframe by setting `X-Frame-Options: SAMEORIGIN` response header. Such is used at google.com, yandex.ru, habrahabr.ru and many more different sites. So `Original` display mode wouldn't work for them. Though all mobilizers and `Original Striped` will work ok, cause they are passing thru the stripping backend.

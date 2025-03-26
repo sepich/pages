@@ -9,8 +9,7 @@ thumbnail: /assets/img/2014/aws1.jpg
 url: /2014/10/userscript-aws-docs-column-reader.html
 ---
 
-Continuation of [Wikipedia goes 3 columns](/2013/01/wikipedia-goes-3-columns.html)
-but now for AWS documentation:
+Continuation of [Wikipedia goes 3 columns](/2013/01/wikipedia-goes-3-columns.html) but now for AWS documentation:
 [http://docs.aws.amazon.com](http://docs.aws.amazon.com/)
 
 This script will make long lines split to 3 columns, to make text more readable for wide screens.

@@ -13,10 +13,12 @@ In my case, all users information is stored in AD (yes, we use Exchange GAL). It
 Let's look what we have now - AD user have fields:  
 `telephoneNumber` - for internal extension number   
 `fax` - for direct inward dialing number (DID) like this:  
+
 ![](/assets/img/2012/pbx1.png)
-{ width="300px" .left }
+{ width="320px" .left }
 ![](/assets/img/2012/pbx2.png)
-{ width="300px" .right }
+{ width="320px" .right }
+
 <div style="clear:both"></div>
 
 From the asterisk side:  
@@ -135,8 +137,8 @@ execincludes = yes; Support #exec in config files.
 
 Test this by `sip reload` and check by `sip show peers` - you must get all your SIP users right from AD every time you make `sip reload`.  
 And last step - add user sync run by schedule:  
-```ini
-#crontab -e
+```bash
+# crontab -e
 */10 8-20 * * * /usr/sbin/asterisk -rx "sip reload"
 ```
 Upper line means run every 10 minutes from 8am till 8pm every day.  

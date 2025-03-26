@@ -7,4 +7,4 @@ page:
 
 build:
 	rm -r ./.public/ 2>/dev/null || true
-	HUGO_SERVICES_GOOGLEANALYTICS_ID=G-SSSSSSSSS hugo
+	HUGO_SERVICES_GOOGLEANALYTICS_ID=G-171JJY7BV0 hugo

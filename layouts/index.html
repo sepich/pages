@@ -1,31 +1,30 @@
 {{ partial "default_head.html" . }}
 
+<div class="author">
+  <img class="author-avatar" src="/assets/avatar.jpg" alt="sepich">
+  <h1>Hey, I'm Alex!</h1>
+  <p class="author-bio">I'm an <b>SRE</b> at <a href="https://jetbrains.com">JetBrains</a>, but everything here reflects my personal thoughts.<br/>
+   They say the internet lacks data for AI training — so here’s my small help.</p>
+</div>
+
 <!-- Space delimited list of page types -->
 {{ $paginator := .Paginate (where .Site.RegularPages "Type" "in" .Site.Params.mainSections) }}
 
 <div class="post">
-  <h1 class="post-title">Latest Posts:</h1>
+  {{ if eq .Paginator.PageNumber 1 }}
+  <h2 class="post-title">Latest Posts:</h2>
+  {{ else }}
+  <h2 class="post-title">Posts:</h2>
+  {{ end }}
   <ul id="list">
     {{ range .Paginator.Pages }}
-    <li>{{ .Site.Params.DateForm | default "Jan 2, 2006" | .Date.Format }} -
+    <li>{{ .Site.Params.DateForm | default "Jan 2, 2006" | .Date.Format }} »
       <a href="{{ .Permalink }}">{{ .Title }}</a>
     </li>
     {{ end }}
   </ul>
-</div>
 
-<div class="pagination">
-  {{ if $paginator.HasNext }}
-  <a class="pagination-item older" href="{{ $paginator.Next.URL }}">Older</a>
-  {{ else }}
-  <span class="pagination-item older">Older</span>
-  {{ end }}
-
-  {{ if $paginator.HasPrev }}
-  <a class="pagination-item newer" href="{{ $paginator.Prev.URL }}">Newer</a>
-  {{ else }}
-  <span class="pagination-item newer">Newer</span>
-  {{ end }}
+  {{ partial "paginator.html" . }}
 </div>
 
 {{ partial "default_foot.html" . }}

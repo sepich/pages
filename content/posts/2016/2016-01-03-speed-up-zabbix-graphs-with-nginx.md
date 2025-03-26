@@ -10,7 +10,7 @@ url: /2016/01/speed-up-zabbix-graphs-with-nginx.html
 ---
 After installing [zabbixGrapher](/2016/08/zabbix-vs-graphs.html) or implementing [Zabbix graphs improvements patch](/2015/08/zabbix-graphs-improvements-patch.html) you might face with an issue of slow image loading on graphs page which contains 24  pics at once. And this problem could get worse depending on how much online users you have in Zabbix. In our case solution was to cache images for 1 minute, as we have usual Item `interval=60sec`. This will help when multiple users looking at the Graphs for same Host (happens when it appears in Monitoring). Also, by default Users in Zabbix have setting to update graphs each 30sec, so caching for 60sec would reduce load twice.
 This is how usual URL to graph image looks:
-```shell
+```php
 chart2.php?graphid=62014&screenid=1&width=600&height=200&legend=1&updateProfile=1&profileIdx=web.screens&profileIdx2=62014&period=604800&stime=20161226030400&sid=f3df43d8c3f401ec
 ```
 
@@ -19,17 +19,17 @@ Nginx cache is fast key-value store, so we need to decide on string Key based on
 - Another thing is that we do not need all the parameters. For example for different users `sid` would have different values, but we want to show same image from cache to all the users.
 
 This will leave us with such stripped down URL:
-```bash
+```php
 chart2.php?period=604800&stime=20161226030400&width=600&height=200&graphid=62014
 ```
 
 For [ad-hoc graphs](https://www.zabbix.com/documentation/2.4/manual/config/visualisation/graphs/adhoc) URL would contain two more parameters and point to chart.php:
-```bash
+```php
 chart.php?period=604800&stime=20161226030400&width=600&height=200&type=0&itemids%5B0%5D=34843&itemids%5B1%5D=34844&itemids%5B2%5D=34845
 ````
 
 And here is resulting nginx configuration for such case:
-```ini
+```nginx
 fastcgi_cache_path /tmp/cache levels=1:2 keys_zone=cache:10m max_size=1G;
 upstream fpm {
   server unix:/var/run/php5-fpm.sock;
@@ -65,7 +65,7 @@ server {
 ```
 Main thing is in location `chart2?\.php` which is regex corresponding to both `chart2.php` and `chart.php`. We strip `$request_uri` to parts we care of, and setting variables to values of those parts.  
 Then we collect all variables in predefined order, to make consistent Key for same image, this will be stored in `$xkey` variable.  
-Then we also adding custom header "X-key" for debugging. It is shown in server response:
+Then we also adding custom header `X-key` for debugging. It is shown in server response:
 ![](/assets/img/2016/xkey.png)  
 We also setting `Expires` to 2 minutes, and ignoring all `Cache-Control` headers sent by php (as they are disabling client-side caching by setting `Expires` to year ago)
 

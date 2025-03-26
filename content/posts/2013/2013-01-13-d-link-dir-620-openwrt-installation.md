@@ -18,6 +18,7 @@ Uboot was updated to 3.3.4 from [deadc0de](http://www.deadc0de.ru/downloads.html
 - place firmware named as `rt305x_firmware.bin` to root of tftp server  
 - turn-on the router while holding RESET button pressed for 5 sec  
 - router will start updating from tftp  
+
 It's possible to flash any firmware from tftp (original, dd-wrt, Kinetic or this OpenWRT)  
   
 ### Root FS on external storage  

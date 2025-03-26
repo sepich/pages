@@ -20,11 +20,11 @@ What's supported:
 
 Installation:
 1. Save this as `/etc/zabbix/zabbix_agentd.conf.d/rabbitmq.conf`:
-```bash
-# rabbitmq[server,uptime] will trigger trap sending
-# run '/etc/zabbix/rabbitmq.py server uptime debug' - to debug trap sending
-UserParameter=rabbitmq[*],/etc/zabbix/rabbitmq.py $1 $2
-```
+    ```bash
+    # rabbitmq[server,uptime] will trigger trap sending
+    # run '/etc/zabbix/rabbitmq.py server uptime debug' - to debug trap sending
+    UserParameter=rabbitmq[*],/etc/zabbix/rabbitmq.py $1 $2
+    ```
 1. Which will call this data-getter:  
 [/etc/zabbix/rabbitmq.py](https://github.com/sepich/zabbix/raw/master/rabbitmq.py)
 1. Import template  
@@ -39,5 +39,5 @@ We have naming convention like `node-1`, `node-2` - and discovering queues only 
 - Data about queues is sent as zabbix traps to lower bandwidth and system load.  
 To troubleshoot `zabbix_sender` run script manually as:
 ```bash
-`/etc/zabbix/rabbitmq.py server uptime debug
+/etc/zabbix/rabbitmq.py server uptime debug
 ```

@@ -24,16 +24,18 @@ Here is what I liked in putty-nd so much:
 [SuperPuTTY](https://code.google.com/p/superputty/) has almost 2 bullets from 3 above. And most importantly it is opensource. So, next time I got mad from `putty-nd` frozen tabs I'd decided to move to `SuperPuTTY`. A little patching and it became a usable client for me ;)
 
 Here is what was done:
-1. Open Session dialog  
-![](/assets/img/2014/opensess.png)
-{ .right }
-Now search field always stay focused, pressing Up/Down you changing selection in table. Second column shows only folder name of session in tree. To search for all sessions in some folder start searching with `/` (as in example). Searching for hostname was changed to be matched from beginning, to search for any part of hostname - prepend search with `%`.
+1. Open Session dialog
+
+   ![](/assets/img/2014/opensess.png)
+   { .right }
+   Now search field always stay focused, pressing Up/Down you changing selection in table. Second column shows only folder name of session in tree. To search for all sessions in some folder start searching with `/` (as in example). Searching for hostname was changed to be matched from beginning, to search for any part of hostname - prepend search with `%`.
 For example to find connection `i.sepa.spb.ru` from screenshot, one could search for `%sepa`
 
 2. Added detection of dropped connection. For such tabs icon will be changed (to icon from putty-nd ;)  
+   
    ![](/assets/img/2014/tabs.png)
-{ .right }
-For those first two tabs context menu will be also reduced. When you switch to such tab and press Enter in console, session will try to reconnect.
+   { .right }
+   For those first two tabs context menu will be also reduced. When you switch to such tab and press Enter in console, session will try to reconnect.
 
 For other changes see commit history: [github.com/sepich/superputty/commits/master](https://github.com/sepich/superputty/commits/master)
   
