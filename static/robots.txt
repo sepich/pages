@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://alex.ryabov.dev/sitemap.xml
