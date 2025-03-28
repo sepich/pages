@@ -16,7 +16,7 @@
 .post :where(a)[target=_blank]:not(:has(img))::after {
     content: "↗";
     font-family: BlinkMacSystemFont, sans-serif;
-    /*display: inline-block;*/
+    /*display: inline-block;*/ /* wrap or underline */
     color: #777;
     font-size: 75%;
     line-height: 0;
@@ -37,18 +37,6 @@ ol {
     padding-left: 1rem;
 }
 
-/*.pagination-item {*/
-/*    width: 2em;*/
-/*    padding: 0.1em;*/
-/*}*/
-/*a.pagination-item {*/
-/*    color: #333;*/
-/*}*/
-/*a.pagination-item:hover {*/
-/*    text-decoration: none;*/
-/*}*/
-
-
 kbd {
     border: 1px solid hsl(210, 9%, 75%);
     border-top-color: hsl(210, 9%, 75%);
@@ -65,6 +53,19 @@ kbd {
     padding: .1em .6em;
     text-shadow: 0 1px 0 hsl(0,0%,100%);
     vertical-align: text-bottom;
+}
+a.hanchor {
+    font-size: 70%;
+    visibility: hidden;
+}
+a.hanchor:hover {text-decoration: none;}
+h1:hover a.hanchor,
+h2:hover a.hanchor,
+h3:hover a.hanchor,
+h4:hover a.hanchor,
+h5:hover a.hanchor,
+h6:hover a.hanchor {
+    visibility: visible;
 }
 
 /* image popup */

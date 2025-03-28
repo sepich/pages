@@ -64,6 +64,8 @@ So what options do we have if we still want **to have Admission** Review?
    That could be done with upstream images, and should prevent the RCE as described. But token is still there.
 4. **Use fork and separate**
    There is no need for Secrets access if you only want to validate `nginx.conf`. Create a fork, which only serves Webhook, and run it with separate KSA having no access to Secrets.
+5. **Ultimate separation**
+   Best solution would be to separate `controller` from `nginx` to 2 different containers in same Pod at least. But `reload` is a signal in nginx. So it would still require some `agent` forwarding signals in `nginx` container. Doable, but only make sense if it would be accepted upstream.
 
 ### The Workaround
 For now we end up with option #3, which is quick to do:
@@ -90,3 +92,16 @@ For now we end up with option #3, which is quick to do:
   Just to make webhook checked config to look more like executed in nginx pods.
 
 Is this validation is important for us only? Why validation was just commented in the code with TODO, and not removed? Will see what will come with next upstream versions...
+
+### The End
+The actual reasons are probably here, in the new pinned Issue [Ingress NGINX Project Status Update](https://github.com/kubernetes/ingress-nginx/issues/13002) and [KubeCon NA 2024 Maintainer talk](https://www.youtube.com/watch?v=KLwsV6_DntA). 
+Which sounds like the end:
+- there are only few maintainers, spending their free time on this project
+- they want to do new shiny things, InGate having zero annotations and no plans to extend above Gateway API specs
+- ingress-nginx is the legacy "having 100 non-conforming annotations" to support
+- endless CVE submissions due to lack of separation between controller and nginx 
+
+I'm totally fine with such a position, and wishing them good luck!
+And maybe it is good they are shifting to other things. Because to me they are either not using `ingress-nginx`, or do not fully understand its value. From a user perspective like me, the power of `ingress-nginx` is specifically in those "100 non-conforming annotations". Because if I need just an "Ingress API implementation" I have [> 20 options](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/#additional-controllers) to choose from. I could say the same about this next-gen `InGate` "having zero annotations and no plans to extend above Gateway API specs". There are plenty of Gateway API implementations already, and I do not see the market for yet another one. Suppose I'm nginx expert. So, why should I care that this one specifically has an nginx inside, if that is not exposed for me in any way?
+
+They say the end is only the beginning... Hopefully this project would live, grow and attract more maintainers!
