@@ -2,7 +2,7 @@
 title: Speed up Zabbix Graphs with Nginx caching
 date: '2016-01-03T15:20:00.001+03:00'
 tags:
-- linux
+- nginx
 - zabbix
 modified: '2016-01-03T15:22:01.739+03:00'
 thumbnail: /assets/img/2016/xkey.png

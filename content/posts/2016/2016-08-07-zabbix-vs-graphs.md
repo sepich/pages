@@ -2,7 +2,7 @@
 title: Zabbix vs Graphs
 date: '2016-08-07T18:11:00.001+03:00'
 tags:
-- linux
+- nginx
 - zabbix
 thumbnail: /assets/img/2016/z1.png
 ---
