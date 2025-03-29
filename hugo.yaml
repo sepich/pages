@@ -13,11 +13,9 @@ params:
   DateForm: "2 Jan 2006"
   github: https://github.com/sepich/
   disableFonts: false
-  customCSS:
-    - https://cdn.jsdelivr.net/npm/glightbox@3.3.1/dist/css/glightbox.min.css
-  customJS:
-    - https://cdn.jsdelivr.net/npm/glightbox@3.3.1/dist/js/glightbox.min.js
   description: |
+    Blog of Alex Ryabov, SRE at JetBrains München
+  sidebar: |
     Opinions expressed here are my own and do not represent those of my employer.
 
 markup:

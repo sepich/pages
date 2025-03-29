@@ -25,17 +25,15 @@
 .post :where(a)[target=_blank]:not(:has(img)):hover::after {
     text-decoration: none;
 }
+div#sidebar {background-image: url("/assets/bg.jpg");}
+.sidebar-nav {background-color: #202020;}
 
-div.post img {
-    display: inline;
-}
+div.post img {display: inline;}
 pre {
     overflow: auto;
     white-space: pre;
 }
-ol {
-    padding-left: 1rem;
-}
+ol {padding-left: 1rem;}
 
 kbd {
     border: 1px solid hsl(210, 9%, 75%);
@@ -58,6 +56,7 @@ a.hanchor {
     font-size: 70%;
     visibility: hidden;
 }
+a.hanchor::after {content: "🔗";}
 a.hanchor:hover {text-decoration: none;}
 h1:hover a.hanchor,
 h2:hover a.hanchor,

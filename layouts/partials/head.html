@@ -6,26 +6,25 @@
 
   <title>
     {{ if .IsHome }}
-      {{ .Site.Params.Title }}
+      {{ .Site.Title }}
     {{ else }}
-      {{ .Title }} &middot; {{ .Site.Params.Title }}
+      {{ .Title }} &middot; {{ .Site.Title }}
     {{ end }}
   </title>
+  {{- with or .Description .Summary .Site.Params.description | plainify | htmlUnescape }}
+  <meta name="description" content="{{ trim . "\r\n\t " }}">
+  {{- end }}
 
   <!-- CSS -->
   <link rel="stylesheet" href="/css/poole.css">
   <link rel="stylesheet" href="/css/syntax.css">
   <link rel="stylesheet" href="/css/lanyon.css">
   {{- if not .Site.Params.disableFonts }}
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700|PT+Sans:400">
+  <link rel="preload" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700|PT+Sans:400" as="style" onload="this.onload=null;this.rel='stylesheet'">
   {{- end }}
-  {{- range .Site.Params.customCSS }}
-  <link rel="stylesheet" href="{{ . | relURL }}">
-  {{- end }}
+  <link rel="preload" href="https://cdn.jsdelivr.net/npm/glightbox@3.3.1/dist/css/glightbox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <link rel="stylesheet" href="/css/extra.css">
-  {{- range .Site.Params.customJS }}
-  <script src="{{ . | relURL }}"></script>
-  {{- end }}
+  <script src="https://cdn.jsdelivr.net/npm/glightbox@3.3.1/dist/js/glightbox.min.js" async onload="GLightbox()"></script>
 
   <!-- Icons -->
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/apple-touch-icon-144-precomposed.png">
