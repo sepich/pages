@@ -8,6 +8,14 @@ permalinks:
   posts: /:year/:month/:title # ~blogger
 outputs:
   term: []  # disable /tags/tag-name/ generation
+enableGitInfo: true # needs full clone in CI
+frontmatter:
+  date:
+    - :filename # get date from filename
+    - :default
+  lastmod:
+    - modified # frontmatter first, then git
+    - :default
 
 params:
   DateForm: "2 Jan 2006"
