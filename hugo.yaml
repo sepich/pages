@@ -29,8 +29,7 @@ markup:
         block: true
   # https://gohugo.io/functions/transform/highlight/#options
   highlight:
-    noClasses: true
-    style: tango # https://gohugo.io/quick-reference/syntax-highlighting-styles/
+    noClasses: false
 
 related:
   includeNewer: true

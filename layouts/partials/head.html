@@ -11,19 +11,16 @@
       {{ .Title }} &middot; {{ .Site.Title }}
     {{ end }}
   </title>
-  {{- with or .Description .Summary .Site.Params.description | plainify | htmlUnescape }}
-  <meta name="description" content="{{ trim . "\r\n\t " }}">
-  {{- end }}
+  {{ template "_internal/opengraph.html" . }}
 
   <!-- CSS -->
-  <link rel="stylesheet" href="/css/poole.css">
-  <link rel="stylesheet" href="/css/syntax.css">
-  <link rel="stylesheet" href="/css/lanyon.css">
+  {{ $style := resources.Get "scss/main.scss" | toCSS | resources.Minify | resources.Fingerprint }}
+  <link rel="stylesheet" href="{{ $style.Permalink }}">
   {{- if not .Site.Params.disableFonts }}
   <link rel="preload" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700|PT+Sans:400" as="style" onload="this.onload=null;this.rel='stylesheet'">
   {{- end }}
   <link rel="preload" href="https://cdn.jsdelivr.net/npm/glightbox@3.3.1/dist/css/glightbox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="stylesheet" href="/css/extra.css">
+
   <script src="https://cdn.jsdelivr.net/npm/glightbox@3.3.1/dist/js/glightbox.min.js" async onload="GLightbox()"></script>
 
   <!-- Icons -->
