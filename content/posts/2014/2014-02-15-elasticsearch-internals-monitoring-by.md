@@ -114,3 +114,25 @@ Also, there are some additional JVM online calculated counters provided by scrip
 
 With such result:
 ![](/assets/img/2014/es1.png)
+
+Comments imported from blogger:
+<div class="comment"><img src="//resources.blogblog.com/img/blank.gif"/><a href="#">Anonymous</a> at <time datetime="2014-03-27T19:12:02.184+04:00">19:12, 27 March 2014</time>:<br/>
+Do you have a zabbix template also ?</div>
+<div class="comment"><img src="//resources.blogblog.com/img/blank.gif"/><a href="#">Anonymous</a> at <time datetime="2014-07-29T10:13:27.080+04:00">10:13, 29 July 2014</time>:<br/>
+Great script!  FYI, your script assumes that your node name matches your host name, in our environment it does not and I was getting the following error:<br /><br />Traceback (most recent call last):<br />  File &quot;/etc/zabbix/bin/elasticsearch.py&quot;, line 68, in <br />    main()<br />  File &quot;/etc/zabbix/bin/elasticsearch.py&quot;, line 62, in main<br />    stats = stats[c.pop(0)]<br />UnboundLocalError: local variable &#39;stats&#39; referenced before assignment<br /><br />I updated the line:<br />if body[&#39;nodes&#39;][node_id][&#39;name&#39;] == os.uname()[1]:<br />to<br />if body[&#39;nodes&#39;][node_id][&#39;hostname&#39;] == os.uname()[1]:<br /><br />so that it would work for me.  Thanks again!<br /></div>
+<div class="comment"><img src="//resources.blogblog.com/img/blank.gif"/><a href="#">Anonymous</a> at <time datetime="2014-08-14T13:38:13.369+04:00">13:38, 14 August 2014</time>:<br/>
+Can you provide Zabbix template please? XML export of template that you use and have this graphs from?</div>
+<div class="comment"><img src="//resources.blogblog.com/img/blank.gif"/><a href="#">Anonymous</a> at <time datetime="2014-09-18T18:04:42.969+04:00">18:04, 18 September 2014</time>:<br/>
+great script can you alos export the xml &amp; post please ?</div>
+<div class="comment"><img src="//resources.blogblog.com/img/blank.gif"/><a href="#">Anonymous</a> at <time datetime="2014-11-19T21:26:16.327+03:00">21:26, 19 November 2014</time>:<br/>
+Can&#39;t generate data. Erro: &quot;Received value [] is not suitable for value type [Numeric (unsigned)] and data type [Decimal]</div>
+<div class="comment"><img src="//blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPIpsFZxeXhwYiaSZFfaBPHaq47D5RjLrUTuKOI_W56xwu2EUEm5gpwBmn6mTlXeSGQMaEmVd4aZENpSrUZQxNXaELJA-QehvcCmMPoa7dXhqdTPW34s6syA1ZCo6yvsI/s1600/avatar.png"/><a href="https://www.blogger.com/profile/15219082553292373774">sepa</a> at <time datetime="2014-12-06T14:47:23.566+03:00">14:47, 06 December 2014</time>:<br/>
+Thank you all for feedback, <br />I&#39;ve published new version of this script:<br />https://alex.ryabov.dev/2014/12/elasticsearch-internals-monitoring-by.html<br />Some bugs were fixed, basic template included.</div>
+<div class="comment"><img src="//resources.blogblog.com/img/blank.gif"/><a href="#">Anonymous</a> at <time datetime="2014-12-30T15:18:16.173+03:00">15:18, 30 December 2014</time>:<br/>
+where i need to setup this, on zabbix client or zabbix server  ?</div>
+<div class="comment"><img src="//blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPIpsFZxeXhwYiaSZFfaBPHaq47D5RjLrUTuKOI_W56xwu2EUEm5gpwBmn6mTlXeSGQMaEmVd4aZENpSrUZQxNXaELJA-QehvcCmMPoa7dXhqdTPW34s6syA1ZCo6yvsI/s1600/avatar.png"/><a href="https://www.blogger.com/profile/15219082553292373774">sepa</a> at <time datetime="2014-12-31T00:08:19.351+03:00">00:08, 31 December 2014</time>:<br/>
+It is client part.<br />For server part template see the new version of article:<br />https://alex.ryabov.dev/2014/12/elasticsearch-internals-monitoring-by.html</div>
+<div class="comment"><img src="//www.blogger.com/img/blogger_logo_round_35.png"/><a href="https://www.blogger.com/profile/10545979198212825289">alpha_Qu4z4r</a> at <time datetime="2016-03-10T16:16:22.020+03:00">16:16, 10 March 2016</time>:<br/>
+Can you export all of your code to github or another public VCS?</div>
+<div class="comment"><img src="//blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPIpsFZxeXhwYiaSZFfaBPHaq47D5RjLrUTuKOI_W56xwu2EUEm5gpwBmn6mTlXeSGQMaEmVd4aZENpSrUZQxNXaELJA-QehvcCmMPoa7dXhqdTPW34s6syA1ZCo6yvsI/s1600/avatar.png"/><a href="https://www.blogger.com/profile/15219082553292373774">sepa</a> at <time datetime="2016-03-10T21:24:06.979+03:00">21:24, 10 March 2016</time>:<br/>
+Have you carefully read the article? Especially the very first line ;)</div>

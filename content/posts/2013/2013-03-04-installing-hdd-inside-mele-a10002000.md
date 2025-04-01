@@ -53,3 +53,10 @@ Operation is completed. Its even possible to open this door a little, to increas
 ![](/assets/img/2013/IMG_20130228_220040.jpg)
 Then power on and check that HDD is still working:  
 ![](/assets/img/2013/Clipboard01.gif)
+
+Comments imported from blogger:
+<div class="comment"><img src="//resources.blogblog.com/img/blank.gif"/><a href="#">Anonymous</a> at <time datetime="2013-03-24T23:32:20.606+04:00">23:32, 24 March 2013</time>:<br/>А как туда Debian поставить???</div>
+<div class="comment"><img src="//blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPIpsFZxeXhwYiaSZFfaBPHaq47D5RjLrUTuKOI_W56xwu2EUEm5gpwBmn6mTlXeSGQMaEmVd4aZENpSrUZQxNXaELJA-QehvcCmMPoa7dXhqdTPW34s6syA1ZCo6yvsI/s1600/avatar.png"/><a href="https://www.blogger.com/profile/15219082553292373774">sepa</a> at <time datetime="2013-03-25T18:26:49.730+04:00">18:26, 25 March 2013</time>:<br/>
+Вначале поставить на карту<br /><a href="http://linux-sunxi.org/Bootable_OS_images" rel="nofollow">http://linux-sunxi.org/Bootable_OS_images</a><br />А потом перенести в NAND, если надо, например с помощью <a href="http://guillaumeplayground.net/pimp-my-mele/" rel="nofollow">PIMP_MY_MELE</a></div>
+<div class="comment"><img src="//resources.blogblog.com/img/blank.gif"/><a href="#">Anonymous</a> at <time datetime="2013-06-21T02:12:15.153+04:00">02:12, 21 June 2013</time>:<br/>
+Похоже здесь единственная во всем интернете фотография варианта платы с четырьмя микросхемами памяти. Вот мне тоже такая досталась. Главный вопрос: на каком разъеме у нее UART и какая распиновка? На известной странице про &quot;hacking mele&quot; изображены не такие варианты платы. А убить устройство неправильным подключением очень бы не хотелось - 5 тыс посредникам платил и два месяца ждал.</div>

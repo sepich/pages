@@ -71,3 +71,7 @@ url: /2011/08/custom-context-commands-in-ad-users-and.html
    ```
    (будет идти бесконечный пинг, закрытие окна по Ctrl-C)
 1. Открываем консоль ADUC и проверяем :)  
+
+Comments imported from blogger:
+<div class="comment"><img src="//resources.blogblog.com/img/blank.gif"/><a href="#">Anonymous</a> at <time datetime="2012-10-30T13:32:58.580+04:00">13:32, 30 October 2012</time>:<br/>
+&gt;&gt;Которое я не смог побороть<br /><br />Это известная фича. Добавьте \\domain.ru в зону интрасети в IE и будет вам счастье.</div>

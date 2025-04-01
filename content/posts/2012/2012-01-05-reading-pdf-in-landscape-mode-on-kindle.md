@@ -36,3 +36,21 @@ Examples of source:
 and 2 pages of zoomed output:  
 ![](/assets/img/2012/kindle2.jpg)
 { width="250px" }  
+
+Comments imported from blogger:
+<div class="comment"><img src="//blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj3idK5UVHvOzaWfqpJL6UqLf0ia8iKbSmrAmR6kGqw3PnwOeLaYvR41tXzDnVw3-zVZC9pNfCExb_D4PuP4pHR0L1G91i7Bf-4FMtzxK8ZuhtjsfP_5VIH2b-Z9YNnDw/s220/Sad+Ballon+Painting.jpg"/><a href="https://www.blogger.com/profile/06052975063371482491">blurred</a> at <time datetime="2012-08-20T23:11:45.941+04:00">23:11, 20 August 2012</time>:<br/>
+that&#39;s great dear...love it...</div>
+<div class="comment"><img src="//resources.blogblog.com/img/blank.gif"/><a href="#">Anonymous</a> at <time datetime="2012-09-02T01:52:10.384+04:00">01:52, 02 September 2012</time>:<br/>
+Thanks you for sharing your options for this wonderful program. By the way, in my case I get better result with dpi200. But I guess it&#39;s depend on original pdf file.<br />p.s. Sorry for my English, it&#39;s not my native language.</div>
+<div class="comment"><img src="//www.blogger.com/img/blogger_logo_round_35.png"/><a href="https://www.blogger.com/profile/14404650622167926856">emathimata team</a> at <time datetime="2013-04-14T00:34:07.329+04:00">00:34, 14 April 2013</time>:<br/>
+Thanks for your help!</div>
+<div class="comment"><img src="//resources.blogblog.com/img/blank.gif"/><a href="#">Anonymous</a> at <time datetime="2014-03-11T20:29:40.398+04:00">20:29, 11 March 2014</time>:<br/>
+Please restore document under link table. It was very useful and seems there is no such information anywhere else.</div>
+<div class="comment"><img src="//blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPIpsFZxeXhwYiaSZFfaBPHaq47D5RjLrUTuKOI_W56xwu2EUEm5gpwBmn6mTlXeSGQMaEmVd4aZENpSrUZQxNXaELJA-QehvcCmMPoa7dXhqdTPW34s6syA1ZCo6yvsI/s1600/avatar.png"/><a href="https://www.blogger.com/profile/15219082553292373774">sepa</a> at <time datetime="2014-03-11T20:38:46.249+04:00">20:38, 11 March 2014</time>:<br/>
+Which exact document you are talking about? Both links in article are still working.</div>
+<div class="comment"><img src="//resources.blogblog.com/img/blank.gif"/><a href="#">Anonymous</a> at <time datetime="2014-03-11T20:50:05.607+04:00">20:50, 11 March 2014</time>:<br/>
+..There is &#39;table&#39; for other readers... I cant check it right now, cause it require google pass. But last time i try there was nothing or error, something like that. But if you say its okay, I&#39;ll try again. TIA</div>
+<div class="comment"><img src="//blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPIpsFZxeXhwYiaSZFfaBPHaq47D5RjLrUTuKOI_W56xwu2EUEm5gpwBmn6mTlXeSGQMaEmVd4aZENpSrUZQxNXaELJA-QehvcCmMPoa7dXhqdTPW34s6syA1ZCo6yvsI/s1600/avatar.png"/><a href="https://www.blogger.com/profile/15219082553292373774">sepa</a> at <time datetime="2014-03-11T20:56:36.500+04:00">20:56, 11 March 2014</time>:<br/>
+Confirmed, looks like owner of original Google doc has deleted the file. Unfortunately I cannot restore it.<br />But it is not an issue, because there is KOReader with wonderfull pdf support:<br />https://github.com/koreader/koreader</div>
+<div class="comment"><img src="//resources.blogblog.com/img/blank.gif"/><a href="#">Anonymous</a> at <time datetime="2014-03-11T21:53:21.274+04:00">21:53, 11 March 2014</time>:<br/>
+Thank you for this link. It seems to be interest info.</div>

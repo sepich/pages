@@ -98,3 +98,6 @@ If you are also using [Zabbix graphs improvements patch](/2015/08/zabbix-graphs-
                 // output
 ```
 Check `zabbixGrapher` again by moving through pages back and forth, or selecting and deselecting the same Host, and images should appear immediately.
+
+Comments imported from blogger:
+<div class="comment"><img src="//resources.blogblog.com/img/blank.gif"/><a href="#">Anonymous</a> at <time datetime="2018-03-19T01:29:26.652+03:00">01:29, 19 March 2018</time>:<br/>Hello, I do think your blog may be having browser compatibility <br />issues. Whenever I take a look at your site in Safari,<br />it looks fine however when opening in IE, it&#39;s <br />got some overlapping issues. I simply wanted <br />to give you a quick heads up! Apart from that, fantastic blog!</div>

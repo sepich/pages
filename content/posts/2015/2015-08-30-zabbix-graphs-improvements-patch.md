@@ -58,3 +58,9 @@ cd /usr/share/zabbix/
 patch -p 1 -i ~/logarithmic-graphs-zabbix-2.4.5.patch
 patch -p 1 -i ~/graphs.patch
 ```
+
+Comments imported from blogger:
+<div class="comment"><img src="//resources.blogblog.com/img/blank.gif"/><a href="#">Anonymous</a> at <time datetime="2015-09-17T18:33:25.960+03:00">18:33, 17 September 2015</time>:<br/>
+This looks great, but unfortunately not working with 2.4.6 :(</div>
+<div class="comment"><img src="//resources.blogblog.com/img/blank.gif"/><a href="#">Anonymous</a> at <time datetime="2015-11-20T19:26:44.905+03:00">19:26, 20 November 2015</time>:<br/>
+How do you implement that?</div>
