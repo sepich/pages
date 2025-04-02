@@ -10,7 +10,7 @@ thumbnail: /assets/img/2015/zb1.png
 url: /2015/08/zabbix-graphs-improvements-patch.html
 ---
 
-> Update: You'd better check out my [zabbixGrapher](/2016/08/zabbix-vs-graphs.html)
+> Update: You'd better check out my [zabbixGrapher](/2016/08/zabbix-vs-graphs)
 
 Here is the cumulative patch to fix some Zabbix graphs viewing issues. Ideas are not new, a lot of zabbix users complains on current out-of-the-box implementation:
 - [ZBXNEXT-1120](https://support.zabbix.com/browse/ZBXNEXT-1120) - Enable viewing a graph for all hosts in a given group

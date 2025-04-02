@@ -30,4 +30,4 @@ will give you only progressbar without Cancel button
 totally silent install
 
 [Download IrfanView.msi](http://ge.tt/9Zraga7)
-[How to](/2011/09/howto-cook-custom-firefox-msi-for-enterprise-deployment.html) do it yourself
+[How to](/2011/09/howto-cook-custom-firefox-msi-for-enterprise-deployment) do it yourself

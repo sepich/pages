@@ -8,7 +8,7 @@ modified: '2016-01-03T15:22:01.739+03:00'
 thumbnail: /assets/img/2016/xkey.png
 url: /2016/01/speed-up-zabbix-graphs-with-nginx.html
 ---
-After installing [zabbixGrapher](/2016/08/zabbix-vs-graphs.html) or implementing [Zabbix graphs improvements patch](/2015/08/zabbix-graphs-improvements-patch.html) you might face with an issue of slow image loading on graphs page which contains 24  pics at once. And this problem could get worse depending on how much online users you have in Zabbix. In our case solution was to cache images for 1 minute, as we have usual Item `interval=60sec`. This will help when multiple users looking at the Graphs for same Host (happens when it appears in Monitoring). Also, by default Users in Zabbix have setting to update graphs each 30sec, so caching for 60sec would reduce load twice.
+After installing [zabbixGrapher](/2016/08/zabbix-vs-graphs) or implementing [Zabbix graphs improvements patch](/2015/08/zabbix-graphs-improvements-patch.html) you might face with an issue of slow image loading on graphs page which contains 24  pics at once. And this problem could get worse depending on how much online users you have in Zabbix. In our case solution was to cache images for 1 minute, as we have usual Item `interval=60sec`. This will help when multiple users looking at the Graphs for same Host (happens when it appears in Monitoring). Also, by default Users in Zabbix have setting to update graphs each 30sec, so caching for 60sec would reduce load twice.
 This is how usual URL to graph image looks:
 ```php
 chart2.php?graphid=62014&screenid=1&width=600&height=200&legend=1&updateProfile=1&profileIdx=web.screens&profileIdx2=62014&period=604800&stime=20161226030400&sid=f3df43d8c3f401ec

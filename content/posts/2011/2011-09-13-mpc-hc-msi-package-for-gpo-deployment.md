@@ -18,7 +18,7 @@ Customizations from original version:
 
 [Download MPC-HC.msi](http://ge.tt/89KiMe7?c) 
 [Скачать MPC-HC.msi](http://ge.tt/89KiMe7?c) с русским языком по умолчанию  
-[How to](/2011/09/howto-cook-custom-firefox-msi-for-enterprise-deployment.html) do it yourself
+[How to](/2011/09/howto-cook-custom-firefox-msi-for-enterprise-deployment) do it yourself
 
 Comments imported from blogger:
 <div class="comment"><img src="//www.blogger.com/img/blogger_logo_round_35.png"/><a href="https://www.blogger.com/profile/04858245765117551000">Lukáš Maršálek</a> at <time datetime="2015-06-17T13:22:30.220+03:00">13:22, 17 June 2015</time>:<br/>

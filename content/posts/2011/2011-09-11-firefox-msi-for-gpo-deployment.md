@@ -29,4 +29,4 @@ for auto-updates works under user. This could be done by GPO settings (Windows c
 
 [Download Firefox_en.msi](http://ge.tt/8IUf6d7?c)
 [Скачать Firefox.msi](http://ge.tt/8IUf6d7?c) русский.  
-[How to](/2011/09/howto-cook-custom-firefox-msi-for-enterprise-deployment.html) do it yourself
+[How to](/2011/09/howto-cook-custom-firefox-msi-for-enterprise-deployment) do it yourself

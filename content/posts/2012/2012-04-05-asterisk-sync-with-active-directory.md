@@ -118,7 +118,7 @@ if($error || !$out) {
 echo $out;
 ?>
 ```
-As you see, we use AD field `facsimileTelephoneNumber` for our DID numbers. Test this script - it must generate needed part of `users.conf` without template. It must work even without connection to LDAP server, read data from its cache and send you error report by mail. (You need to [make mail configured](/2011/09/debian-mail-notification-by-gmail.html">) for this to work)  
+As you see, we use AD field `facsimileTelephoneNumber` for our DID numbers. Test this script - it must generate needed part of `users.conf` without template. It must work even without connection to LDAP server, read data from its cache and send you error report by mail. (You need to [make mail configured](/2011/09/debian-mail-notification-by-gmail.html) for this to work)  
 If script works as you need - include it to `users.conf` after SIP user template, like this  
 ```ini
 [lan](!)
