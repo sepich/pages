@@ -1,0 +1,8 @@
+{{- with .Page.Resources.Get .Params.path }}
+  {{- with .Process (printf "fill %dx%d wepb" ($.Get "w") ($.Get "h")) -}}
+    <a href="{{ $.Params.path}}" class="glightbox"><img src="{{ .RelPermalink }}" width="{{ .Width }}" height="{{ .Height }}"
+      {{ with $.Get "alt" }}alt="{{.}}"{{end}}
+      {{ with $.Get "class" }}class="{{.}}"{{end}}
+    ></a>
+  {{- end }}
+{{- end -}}

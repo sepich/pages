@@ -1,0 +1,8 @@
+{{- with .Page.Resources.Get (.Get "path") }}
+  {{- with .Process (printf "resize %dx wepb" ($.Get "w")) -}}
+    <a href="{{ $.Get "path"}}" class="glightbox"><img src="{{ .RelPermalink }}" width="{{ .Width }}" height="{{ .Height }}"
+      {{ with $.Get "alt" }}alt="{{.}}"{{end}}
+      {{ with $.Get "class" }}class="{{.}}"{{end}}
+    ></a>
+  {{- end }}
+{{- end -}}

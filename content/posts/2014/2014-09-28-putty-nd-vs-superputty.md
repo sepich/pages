@@ -1,5 +1,5 @@
 ---
-title: 'putty-nd vs SuperPuTTY '
+title: putty-nd vs SuperPuTTY
 date: '2014-09-28T15:34:00.000+04:00'
 tags:
 - linux

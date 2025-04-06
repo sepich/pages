@@ -6,8 +6,6 @@ publishdir: .public
 permalinks:
   page: /:title/
   posts: /:year/:month/:title # ~blogger
-outputs:
-  term: []  # disable /tags/tag-name/ generation
 enableGitInfo: true # needs full clone in CI
 frontmatter:
   date:
@@ -25,6 +23,9 @@ params:
     Blog of Alex Ryabov, SRE at JetBrains München
   sidebar: |
     Opinions expressed here are my own and do not represent those of my employer.
+  author: # used in RSS
+    email: alex@ryabov.dev
+    name: Alex Ryabov
 
 markup:
   goldmark:
@@ -53,3 +54,9 @@ related:
       weight: 20
 taxonomies:
   tag: tags
+
+services:
+  rss:
+    limit: 42
+outputs:
+  term: []  # disable /tags/tag-name/ generation
