@@ -2,6 +2,10 @@
     </div>
 
     <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+    {{- if .Params.toc | default false }}
+      {{- $js := resources.Get "js/theme.ts" | js.Build (dict "minify" true "targetPath" "js/main.js") -}}
+    <script src="{{ $js.RelPermalink }}" defer></script>
+    {{- end }}
     {{ template "_internal/google_analytics.html" . }}
   </body>
 </html>

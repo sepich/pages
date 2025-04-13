@@ -3,10 +3,11 @@ title: How to write a GitHub Action in Python for changed files
 date: 2025-03-16T20:03:01+01:00
 tags:
   - GitHub
-  - Python 
+  - Python
+toc: true
 ---
 Let's write a simple Python in-place GitHub Action to return which group of files has changed.
-### Why?
+## Why?
 I like the ideology behind monorepos. But apart from all the good stuff they bring, you also need some support from CI/CD side to make them working. At least you want to only trigger the subset of builds based on a which subset of files has changed. And that should be the basic functionality of CI.
 ```yaml
 on:
@@ -25,9 +26,9 @@ Unfortunately that is not something existing as a built-in Action from GitHub. B
 > All versions of `tj-actions/changed-files` are compromised
 
 But I do not want to review the 30k files in the `node_modules/` of an Action looking for another [left-pad](https://en.wikipedia.org/wiki/Npm_left-pad_incident). So, let's just use Python?
-### Building blocks
+## Building blocks
 
-##### Python
+### Python
 
 [GitHub runner](https://github.com/actions/runner/blob/main/images/Dockerfile) is a `.NET Core` app executing scripts in `Typescript`. Also as I see, the only available SDK is in Typescript too, which you can use via official [actions/github-script](https://github.com/actions/github-script)
 
@@ -42,7 +43,7 @@ pip list
 # PyYAML             6.0.1 
 ```  
 
-##### Minimal in-repo Action
+### Minimal in-repo Action
 Now we need some simple way to create our new custom Action without building docker images or creating new git repositories. And per [docs](https://docs.github.com/en/actions/sharing-automations/creating-actions/creating-a-composite-action#creating-a-composite-action-within-the-same-repository) it is possible via placing it to `.github/actions/` folder. Let's try if it works, create new branch with 2 files below:
 
 ```yaml
@@ -122,7 +123,7 @@ run: echo "::set-output name={name}::{value}"
 run: echo "{name}={value}" >> $GITHUB_OUTPUT  
 ```
 But it is [deprecated](https://github.blog/changelog/2022-10-11-github-actions-deprecating-save-state-and-set-output-commands/  )
-#### Get changed files
+### Get changed files
 Now to the meat of our Action, how to actually detect the changed files? We plan to run the Action for Pull Requests, which are open for some branch to be merged to `master`. There are 2 ways:
 - `git diff --name-only master...HEAD`
   That should list all files changed in the branch starting from `merge-base`. Problem with that is [actions/checkout](https://github.com/actions/checkout) by default clone as `fetch-depth: 1`. I.e you only has a shallow clone with one single latest commit (branch HEAD). To make this command working need to increase depth to at least so many commits, as it could be in a branch since it was forked from master. That means you need to clone the whole repo, to make it 100% working.
@@ -146,7 +147,7 @@ Let's check that API is as described, and there are necessary permissions. Tune 
         echo 'groups=["a", "b"]' >> $GITHUB_OUTPUT
 ```
 Ok, that would be one of our script Inputs, but what should be the output?
-#### The Matrix
+### The Matrix
 Suppose we have such file structure in the repo:
 ```
 repo/
@@ -197,7 +198,7 @@ For example:
         echo "${{ matrix.id.role }}"
   ```
 [Read more](https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/running-variations-of-jobs-in-a-workflow) details about `matrix` strategy.
-### Show me the code
+## Show me the code
 This information was enough to start writing some code. I've wrote the script, PR got merged, and tuned out I've forgot one more important thing. We've only discussed getting changed files while we're in a branch state. We use `groups` to run tests here. But after a merge, we want to know the same `groups` to build or deploy only changed components.
 We can use [get-a-commit](https://docs.github.com/en/rest/commits/commits?apiVersion=2022-11-28#get-a-commit) API call here.
 And mode could be detected via env:
@@ -285,7 +286,7 @@ if __name__ == "__main__":
     set_out('groups', json.dumps(out))
 ```
 
-### Reality
+## Reality
 You can use it for some inspiration. But first thing that comes to my mind when I've start to use it, is that we've replaced "100 workflow files" with yaml having "100 similar file groups defined":
 ```yaml
      - id: changed  

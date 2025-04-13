@@ -3,6 +3,7 @@ title: kubelet for darwin and iCRI
 description: Kubernetes Cluster with Mac mini nodes running macOS Pods as a VM
 date: '2024-03-20'
 tags: [icri]
+toc: true
 ---
 Today we are at **KubeCon 2024 Paris**, and I want to tell you the story behind this small glowing box:
 

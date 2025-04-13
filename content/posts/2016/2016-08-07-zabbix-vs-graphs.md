@@ -5,6 +5,7 @@ tags:
 - nginx
 - zabbix
 thumbnail: /assets/img/2016/z1.png
+toc: true
 ---
 > This is english version of my publication: https://habr.com/ru/articles/275737/
 
@@ -14,7 +15,7 @@ Zabbix makes it easy and convenient to set up monitoring for a large number of d
 
 But why have all these improvements overlooked navigation through such a vast number of collected graphs and their display?
 
-### What we have now
+## What we have now
 The main purpose for which Zabbix is used in our company is trend evaluation rather than current alerts and triggers. That is, we primarily need to quickly open all graphs for a single server when issues happen, or the same graph across a group of servers.
 
 What does the standard zabbix-frontend-php offer us for this?
@@ -26,7 +27,7 @@ Not so much! You are allowed to select a group, then choose a host from it, and 
 You might say that the solution to this problem is **Screens**, which need to be pre-created with graphs of type **Dynamic item**. Unfortunately, this approach only adds problems when you simply need to open the right Screen from a list of "over 9000"(c) in a plain list.
 Have you ever tried quickly opening a Screen created on a host via a template? Then switching to a neighboring host?
 
-### Server-side graphs
+## Server-side graphs
 The problem has been acknowledged by users, and feature requests for graph display are among the [top requests in JIRA](https://support.zabbix.com/browse/ZBXNEXT-75?jql=project%20%3D%20ZBXNEXT%20AND%20status%20%3D%20Open%20ORDER%20BY%20votes%20DESC) by developers. And users are not just requesting – they are hacking solutions themselves. In [ZBXNEXT-75](https://support.zabbix.com/browse/ZBXNEXT-75), a patch was found (dating back to 2006) that adds what seems like an obvious feature:  
 If we select a group in graphs, then choose a server from it but leave the graph option as **all**, all graphs for that host will be displayed on one page. The same applies to selecting a specific graph but setting the server name to **all** – the chosen graph will be displayed for all servers in the group.
 This seems so logical that it should be available "out of the box"!
@@ -36,7 +37,7 @@ Btw, I simply don't understand why this patch is not included into Zabbix source
 
 The patch was installed, and for a while, it made life easier. However, the reason why this functionality has not been officially implemented soon became apparent – server-side image generation performance is subpar. It is tolerable when there is only one image on the page, but when there are 20, it becomes noticeable.
 
-### Client-side graphs
+## Client-side graphs
 Let's take a moment to remember that it's 2016, and modern, trendy systems like [Graphite](http://graphiteapp.org/quick-start-guides/graphing-metrics.html), [Grafana](http://play.grafana.org/), and [Chronograf](https://influxdata.com/time-series-platform/chronograf/) render graphs on the client side. Moreover, there is even a [data-source plugin for Zabbix](https://github.com/alexanderzobnin/grafana-zabbix) in Grafana:
 ![](/assets/img/2016/z3.png)  
 This is a great opportunity to try something new with the already collected native data, to look at it from a different perspective. And due to its relative simplicity, I highly recommend doing so. A good comparison of the original capabilities and Grafana can be found in [the wiki](http://zabbix.org/wiki/Docs/zabbix_grafana).
@@ -47,7 +48,7 @@ But unfortunately, the plugin did not work for us for several reasons:
 
 That is, we would like something more integrated into Zabbix since its template inheritance system is quite convenient. It's a pity that the 2013 initiative to [transition rendering to D3.js](http://zabbix.org/wiki/Docs/maps_charts_d3) failed. Yes, [zabbix-d3](https://github.com/heaje/zabbix-d3) works, but it encounters the same architectural limitations of the API. We can only hope that the many ZBXNEXT requests created to support D3 will eventually be implemented. This will also improve Grafana and its potential competitors in the future. (Developers, don’t miss your chance to break free from the nearly adult PHP code!)
 
-### Server-side graphs #2
+## Server-side graphs #2
 Different companies have tackled the problem of graphs in Zabbix in different ways. For example, Ring Central [among other things](https://blog.ringcentral.com/2013/10/scaling-a-zabbix-monitoring-system-to-accommodate-business-growth/) built a separate farm for rendering graphs.
 With a dedicated web interface for navigating and viewing them:
 ![](/assets/img/2016/z4.png)  
@@ -69,7 +70,7 @@ That is, the notorious token for the Zabbix API is simply the SSID, already stor
 
 Besides viewing arbitrary pre-created graphs by hosts, we also managed to implement the ability to create graphs for any counters on the fly. This uses HTML5 history, which changes the URL as the page state changes—allowing users to share links to their selected graphs.
 
-### LLD
+## LLD
 The ability to generate graphs on the fly also somewhat addressed [ZBXNEXT-927](https://support.zabbix.com/browse/ZBXNEXT-927) (ranked #2 in JIRA). The problem is as follows:
 - You have LLD (Low-Level Discovery), for example, to detect all disks on a server. It successfully creates a counter, such as `Free disk space, %` for each disk.
 - In LLD, you can only create separate graphs for each detected disk. You cannot create a single graph displaying free space on all disks:
@@ -84,7 +85,7 @@ Yes, since 2012, there have been [scripts](https://www.zabbix.com/forum/showthre
 
 It simply allows for convenient editing of tasks that a cron-based script will execute. Writing this simple form required diving deeper into Zabbix’s web interface than the public API, and unfortunately, what I saw was not encouraging. (Not fun at all.) However, it explains why the response from developers in [ZBXNEXT-927](https://support.zabbix.com/browse/ZBXNEXT-927) was a link to [Development services](http://www.zabbix.com/development_services.php). The minimum price for current projects on this page starts at €8,000.00.
 
-### The End
+## The End
 That’s all for now. Hopefully, this collection helps someone (perhaps to realize it’s time to migrate from Zabbix ;)
 
 PS  

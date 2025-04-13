@@ -1,8 +1,9 @@
 {{- with .Page.Resources.Get .Params.path }}
-  {{- with .Process (printf "fill %dx%d wepb" ($.Get "w") ($.Get "h")) -}}
-    <a href="{{ $.Params.path}}" class="glightbox"><img src="{{ .RelPermalink }}" width="{{ .Width }}" height="{{ .Height }}"
+  {{- $s := .Process (printf "fill %dx%d wepb" ($.Get "w") ($.Get "h")) -}}
+  {{- $l := .Process (printf "fill %dx%d wepb" (mul ($.Get "w") 2) (mul ($.Get "h") 2)) -}}
+    <a href="{{ $.Params.path}}" class="glightbox"><img width="{{ $s.Width }}" height="{{ $s.Height }}"
+      src="{{ $l.RelPermalink }}" srcset="{{ $s.RelPermalink }}, {{ $l.RelPermalink }} 2x"
       {{ with $.Get "alt" }}alt="{{.}}"{{end}}
       {{ with $.Get "class" }}class="{{.}}"{{end}}
-    ></a>
-  {{- end }}
+      loading="lazy"></a>
 {{- end -}}
