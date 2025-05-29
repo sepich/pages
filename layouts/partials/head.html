@@ -14,6 +14,7 @@
     {{ end }}
   </title>
 
+  <link rel="canonical" href="{{ .Permalink | safeURL }}" />
   <!-- CSS -->
   {{ $style := resources.Get "scss/main.scss" | toCSS | resources.Minify | resources.Fingerprint }}
   <link rel="stylesheet" href="{{ $style.Permalink }}">
