@@ -6,6 +6,12 @@
       {{- $js := resources.Get "js/theme.ts" | js.Build (dict "minify" true "targetPath" "js/main.js") -}}
     <script src="{{ $js.RelPermalink }}" defer></script>
     {{- end }}
+    {{ if .Store.Get "hasMermaid" }}
+    <script type="module">
+      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs';
+      mermaid.initialize({ startOnLoad: true, theme: 'neutral', look: 'handDrawn' });
+    </script>
+    {{ end }}
     {{ template "_internal/google_analytics.html" . }}
   </body>
 </html>
